@@ -1,0 +1,413 @@
+.er_plugin {
+    min-width: 500px;
+}
+.er_plugin .sat_box {
+    border: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    clear: both;
+}
+.er_plugin .sat_box .sat_box_title {
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+.er_plugin #sat_box_status {
+    background-color: #EFF5FF;
+}
+.er_plugin #sat_box_notice {
+    background-color: #C4F095;
+}
+.er_plugin #sat_box_help {
+    background-color: #FFFFE0;
+    border-color: #E6DB55;
+    margin-bottom: 10px;
+}
+.er_plugin #sat_box_help ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+.er_plugin #sat_box_help .sat_box_title {
+    border-color: #E6DB55;
+}
+.er_plugin #sat_box_help a {
+    color: #111;
+}
+.er_plugin #sat_box_help a:hover {
+    color: #d54e21;
+}
+.er_plugin #sat_box_info {
+    border-color: #729AE0;
+    margin-bottom: 10px;
+    background-color: #EFF5FF;
+}
+.er_plugin #sat_box_info ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+.er_plugin #sat_box_info .sat_box_title {
+    border-color: #729AE0;
+}
+.er_plugin #sat_box_info a {
+    color: #111;
+}
+.er_plugin #sat_box_info a:hover {
+    color: #d54e21;
+}
+.er_plugin #sat_box_updated {
+    background-color: #def0d8;
+    color: #367e31;
+    font-weight: bold;
+    border-color: #367e31;
+}
+.er_plugin #sat_box_updatederror {
+    background-color: #fff5f3;
+    color: #ca2523;
+    font-weight: bold;
+    border-color: #ca2523;
+}
+.er_plugin .sat_table {
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    margin: 0 0 25px;
+    width: 100%;
+}
+.er_plugin .sat_table textarea,
+.er_plugin .sat_table input {
+    border-color: #aaa;
+    border: 1px solid #ddd;
+}
+.er_plugin .sat_table tr.row_head th {
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #3E687B;
+    color: #fff;
+    text-shadow: 0 1px 0 #333;
+}
+.er_plugin .sat_table tr.row_head th a {
+    color: #F1EE10;
+}
+.er_plugin .sat_table tr.row_head th a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.er_plugin .sat_table tr.row_odd,
+.er_plugin .sat_table tr.row_odd td {
+    color: #222;
+    background-color: #ddd;
+    border-bottom: 1px dotted #BBBBBB;
+}
+.er_plugin .sat_table tr.row_even,
+.er_plugin .sat_table tr.row_even td {
+    color: #333;
+    background-color: #fff;
+    border-bottom: 1px dotted #bbb;
+}
+.er_plugin .sat_table tr td.row_multi {
+    border-right: 1px dotted #BBBBBB;
+}
+.er_plugin .sat_table tr.row_foot td {
+    background-color: #ddd;
+}
+.er_plugin .sat_table tr.row_foot .error_message {
+    color: red;
+    background: url("../images/status_error.png") no-repeat scroll 0 50% #dddddd;
+    padding-left: 25px;
+    font-weight: bold;
+}
+.er_plugin .sat_table tr.row_foot .error_message,
+.er_plugin .sat_table tr.row_foot .error_message a {
+    color: red;
+    font-weight: bold;
+}
+.er_plugin .sat_table tr.row_foot .working_message {
+    color: blue;
+    background: url("../images/status_loading.gif") no-repeat scroll 0 50% #dddddd;
+    padding-left: 25px;
+    font-weight: bold;
+}
+.er_plugin .sat_table tr.row_foot .error_message a:hover {
+    color: #C70000;
+}
+.er_plugin .sat_table tr.row_foot .success_message {
+    color: green;
+    background: url("../images/status_ok.png") no-repeat scroll 0 50% #dddddd;
+    padding-left: 25px;
+    font-weight: bold;
+}
+.er_plugin .block-adjust {
+    display: inline-block;
+    width: 300px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+.er_plugin .tdwidthspinner > span.ui-spinner.ui-widget.ui-widget-content.ui-corner-all {
+    width: 100%;
+    border-color: #aaa !important;
+    border: 1px solid #ddd !important;
+}
+.er_plugin .tdwidthspinner > span > input {
+    width: 100%;
+    border: 0 !important;
+    outline: initial;
+    padding: 0 !important;
+    border-color: transparent;
+    -webkit-box-shadow: none !important;
+}
+.er_plugin .submit_default_tools {
+    vertical-align: baseline !important;
+    margin-left: 10px !important;
+}
+.er_plugin .width-h4-tools {
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+}
+.er_plugin .fix-td-newtool {
+    padding: 0 2px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+}
+.er_plugin .fix-width-td-newtool {
+    width: 1px !important;
+}
+.er_plugin select.sat_keyworddensity_stopwordmode,
+.er_plugin textarea.sat_keyworddensity_stopworddictionaries,
+.er_plugin input.sat_keyworddensity_url,
+.er_plugin input.sat_keyworddensity_minwordlength,
+.er_plugin select.sat_keyworddensity_ignorebody {
+    width: 100%;
+}
+.er_plugin .sat_floatrigth {
+    float: right;
+}
+.er_plugin .sat_floatleft {
+    float: left;
+}
+.er_plugin .sat_mariginright {
+    margin-right: 10px;
+}
+.er_plugin .sat_mariginleft {
+    margin-left: 10px;
+}
+.er_plugin .sat_marigin5bottom {
+    margin-bottom: 5px;
+}
+.er_plugin .widget .widget-top.sat_nomovecursor {
+    cursor: auto;
+}
+.er_plugin .sat_borderradius3 {
+    border-radius: 3px !important;
+}
+.er_plugin .sat_noborder {
+    border: 0 !important;
+}
+.er_plugin .sat_nomargin {
+    margin: 0 !important;
+}
+.er_plugin .sat_nopadding {
+    padding: 0 !important;
+}
+.er_plugin .sat_padded {
+    padding: 15px !important;
+}
+.er_plugin .sat_nobg {
+    background-color: transparent !important;
+}
+.er_plugin .sat_bglgray {
+    background-color: #F9F9F9 !important;
+}
+.er_plugin .widget-title h4 {
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+.er_plugin .sat_floatingrigthbuttontop {
+    float: right;
+    margin-top: 18px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.er_plugin .sat_widget {
+    margin-bottom: 10px;
+}
+.er_plugin .satclearboth {
+    clear: both;
+}
+.er_plugin input.sat_actualcity {
+    width: 290px;
+    height: 28px;
+    margin-right: 5px;
+}
+.er_plugin span.sat_actualcityaddbt {
+    width: 60px;
+    margin-left: 10px;
+}
+.er_plugin select.sat_countriesselectbox,
+.er_plugin textarea.sat_textareakeywords,
+.er_plugin select.sat_maxcities {
+    width: 100%;
+}
+.er_plugin hr.sat_graydashed {
+    border: 0;
+    border-bottom: 1px dashed #aaaaaa;
+}
+.er_plugin .button-primary.focus,
+.er_plugin .button-primary.hover,
+.er_plugin .button-primary:focus,
+.er_plugin .button-primary:hover {
+    background: #1e8cbe;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.6);
+    box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.6);
+    color: #fff;
+}
+.er_plugin .button-primary {
+    background: #2ea2cc;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5), 0 1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5), 0 1px 0 rgba(0, 0, 0, 0.15);
+    color: #fff;
+    text-decoration: none;
+}
+.er_plugin .button-primary,
+.er_plugin .button-secondary {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    margin: 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.er_plugin .button-primary.focus,
+.er_plugin .button-primary.hover,
+.er_plugin .button-primary:focus,
+.er_plugin .button-primary:hover {
+    background: #1e8cbe;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.6);
+    box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.6);
+    color: #fff;
+}
+.er_plugin .button-primary {
+    background: #2ea2cc;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5), 0 1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5), 0 1px 0 rgba(0, 0, 0, 0.15);
+    color: #fff;
+    text-decoration: none;
+}
+.er_plugin .widget .widget-top {
+    background: #fafafa;
+    color: #222;
+}
+.er_plugin .widget-top {
+    font-size: 13px;
+    font-weight: 600;
+    background: #f7f7f7;
+}
+.er_plugin .widget-inside,
+.er_plugin .widget-top,
+.er_plugin .widgets-holder-wrap,
+.er_plugin .wp-editor-container,
+.er_plugin p.popular-tags,
+.er_plugin table.widefat {
+    border: 1px solid #e5e5e5;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.er_plugin .widget-title h4 {
+    margin: 0;
+    padding: 15px;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;    
+}
+.er_plugin input,
+.er_plugin select,
+.er_plugin textarea {
+    margin: 1px;
+    padding: 3px 5px;
+}
+.er_plugin input,
+.er_plugin select,
+.er_plugin textarea {
+    font-size: 14px;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+.er_plugin button,
+.er_plugin input,
+.er_plugin select,
+.er_plugin textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+.er_plugin #sat_newreport_url {
+    width: 100%;
+}
+.er_plugin .sat_hidden {
+    display: none;
+}
+.er_plugin .sat_error,
+.er_plugin .sat_alert,
+.er_plugin .sat_notice,
+.er_plugin .sat_success,
+.er_plugin .sat_info {
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 2px solid #ddd;
+}
+.er_plugin .sat_error,
+.er_plugin .alert {
+    background: #fbe3e4;
+    color: #8a1f11;
+    border-color: #fbc2c4;
+}
+.er_plugin .sat_notice {
+    background: #fff6bf;
+    color: #514721;
+    border-color: #ffd324;
+}
+.er_plugin .sat_success {
+    background: #e6efc2;
+    color: #264409;
+    border-color: #c6d880;
+}
+.er_plugin .sat_info {
+    background: #d5edf8;
+    color: #205791;
+    border-color: #92cae4;
+}
+.er_plugin .sat_error a,
+.er_plugin .sat_alert a {
+    color: #8a1f11;
+}
+.er_plugin .sat_notice a {
+    color: #514721;
+}
+.er_plugin .sat_success a {
+    color: #264409;
+}
+.er_plugin .sat_info a {
+    color: #205791;
+}

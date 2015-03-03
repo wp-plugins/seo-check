@@ -1,0 +1,57 @@
+.sat_theme_lite .widget-top{
+    display: none;
+}
+.sat_theme_lite{
+    color: #333;
+}
+.sat_theme_lite .sat_newreport textarea,
+.sat_theme_lite .sat_newreport select,
+.sat_theme_lite .sat_newreport input{
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.sat_theme_lite .widget-inside{
+    border: 0;
+    box-shadow: none;
+}
+.sat_theme_lite  .wrap{
+    background-color: #F9F9F9;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #e5e5e5
+}
+.sat_theme_lite input[type=submit]{
+    color: #fff;
+    background-color: #c34222;
+    border-color: #ad3b1e;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    /*    font-size: medium;*/
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    width: 90%;
+}
+.sat_theme_lite input[type=submit]:hover{
+    background-color: #AE3315;
+}
+
+.sat_theme_lite .sat_actualcityaddbt.button-primary{
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    /*    font-size: medium;*/
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    color: #fff; 
+}
+.sat_theme_lite .sat_actualcityaddbt.button-primary:hover{
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.sat_theme_lite select{border: 1px solid #cecece;}

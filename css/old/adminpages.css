@@ -1,0 +1,463 @@
+.sat_page {
+    /*    max-width: 1200px;*/
+    min-width: 500px;
+}
+
+/* ********************* Boxes */
+.sat_box {
+    border: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    clear: both;
+}
+
+.sat_box .sat_box_title {
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+#sat_box_status {
+    background-color: #EFF5FF;
+}
+
+#sat_box_notice {
+    background-color: #C4F095;
+}
+
+#sat_box_help {
+    background-color: #FFFFE0;
+    border-color: #E6DB55;
+    margin-bottom: 10px;
+}
+
+#sat_box_help ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+#sat_box_help .sat_box_title {
+    border-color: #E6DB55;
+}
+
+#sat_box_help a {
+    color: #111;
+}
+
+#sat_box_help a:hover {
+    color: #d54e21;
+}
+
+#sat_box_info {
+    border-color: #729AE0;
+    margin-bottom: 10px;
+    background-color: #EFF5FF;
+}
+
+#sat_box_info ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+#sat_box_info .sat_box_title {
+    border-color: #729AE0;
+}
+
+#sat_box_info a {
+    color: #111;
+}
+
+#sat_box_info a:hover {
+    color: #d54e21;
+}
+
+#sat_box_updated {
+    background-color: #def0d8;
+    color: #367e31;
+    font-weight: bold;
+    border-color: #367e31;
+}
+
+#sat_box_updatederror {
+    background-color: #fff5f3;
+    color: #ca2523;
+    font-weight: bold;
+    border-color: #ca2523;
+}
+
+/* ********************* Tables */
+.sat_table {
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    margin: 0 0 25px;
+    width: 100%;
+}
+
+.sat_table textarea,.sat_table input {
+    border-color: #aaa;
+    border: 1px solid #ddd;
+}
+
+.sat_table tr.row_head th {
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #3E687B;
+    color: #fff;
+    text-shadow: 0 1px 0 #333;
+}
+
+.sat_table tr.row_head th a {
+    color: #F1EE10;
+}
+
+.sat_table tr.row_head th a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sat_table tr.row_odd,.sat_table tr.row_odd td {
+    color: #222;
+    background-color: #ddd;
+    border-bottom: 1px dotted #BBBBBB;
+}
+
+.sat_table tr.row_even,.sat_table tr.row_even td {
+    color: #333;
+    background-color: #fff;
+    border-bottom: 1px dotted #bbb;
+}
+
+.sat_table tr td.row_multi {
+    border-right: 1px dotted #BBBBBB;
+}
+
+.sat_table tr.row_foot td {
+    background-color: #ddd;
+}
+
+.sat_table tr.row_foot .error_message {
+    color: red;
+    background: url("../images/status_error.png") no-repeat scroll 0 50% #ddd;
+    padding-left: 25px;
+    font-weight: bold;
+}
+
+.sat_table tr.row_foot .error_message,.sat_table tr.row_foot .error_message a {
+    color: red;
+    font-weight: bold;
+}
+
+.sat_table tr.row_foot .working_message {
+    color: blue;
+    background: url("../images/status_loading.gif") no-repeat scroll 0 50% #ddd;
+    padding-left: 25px;
+    font-weight: bold;
+}
+
+.sat_table tr.row_foot .error_message a:hover {
+    color: #C70000;
+}
+
+.sat_table tr.row_foot .success_message {
+    color: green;
+    background: url("../images/status_ok.png") no-repeat scroll 0 50% #ddd;
+    padding-left: 25px;
+    font-weight: bold;
+}
+
+
+/************** general things */
+.block-adjust{
+    display: inline-block;
+    width: 300px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+.tdwidthspinner > span.ui-spinner.ui-widget.ui-widget-content.ui-corner-all{
+    width: 100%;
+    border-color: #aaa !important;
+    border: 1px solid #ddd !important;
+}
+.tdwidthspinner > span > input{
+    width: 100%;
+    border: 0 !important;
+    outline: initial;
+    padding: 0 !important;
+    border-color: none;
+    -webkit-box-shadow: none !important;
+}
+
+.submit_default_tools{
+    vertical-align: baseline !important;
+    margin-left: 10px !important;
+}
+.width-h4-tools{
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+}
+.fix-td-newtool{
+    padding: 0 2px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+}
+.fix-width-td-newtool{
+    width: 1px !important;
+}
+select.sat_keyworddensity_stopwordmode, textarea.sat_keyworddensity_stopworddictionaries,
+input.sat_keyworddensity_url ,input.sat_keyworddensity_minwordlength, select.sat_keyworddensity_ignorebody{
+    width: 100%;
+}
+.sat_page .sat_floatrigth{
+    float: right;
+}
+.sat_page .sat_floatleft{
+    float: left;
+}
+.sat_page .sat_mariginright{
+    margin-right: 10px;
+}
+.sat_page .sat_mariginleft{
+    margin-left: 10px;
+}
+.sat_page .sat_marigin5bottom{
+    margin-bottom: 5px;
+}
+.sat_page .widget .widget-top.sat_nomovecursor{
+    cursor: auto;
+}
+
+.sat_page .sat_borderradius3{
+    border-radius: 3px !important;
+}
+.sat_page .sat_noborder{
+    border:0 !important;
+}
+.sat_page .sat_nomargin{
+    margin:0 !important;
+}
+.sat_page .sat_nopadding{
+    padding:0 !important;
+}
+.sat_page .sat_padded{
+    padding:15px !important;
+}
+.sat_page .sat_nobg{
+    background-color: transparent !important;
+}
+.sat_page .sat_bglgray{
+    background-color: #F9F9F9 !important;
+}
+
+.sat_page .widget-title h4{
+    border-bottom: 1px solid #ccc; 
+    font-size: 15px; 
+    font-weight: bold; 
+    padding-bottom: 5px;
+}
+.sat_page .sat_floatingrigthbuttontop{
+    float: right;
+    margin-top: 18px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.sat_widget{
+    margin-bottom: 10px;
+}
+
+
+.satclearboth{
+    clear:both;
+}
+
+input.sat_actualcity{
+    width: 290px;
+    height: 28px;
+    margin-right: 5px;
+}
+span.sat_actualcityaddbt{
+    width: 60px;
+    margin-left: 10px;
+}
+select.sat_countriesselectbox, textarea.sat_textareakeywords,select.sat_maxcities{
+    width: 100%;
+}
+
+.sat_tabscountries .sat_labelcountry {
+    display: inline-block;
+    width: 190px;
+    vertical-align: middle;
+}
+.sat_tabscountries h4 {
+    margin-top: 2px;
+    color: gray;
+}
+.sat_tabscountries .sat_labelcountry .sat_checkboxcountry {
+    margin-top: -8px;
+}
+.sat_tabscountries .sat_labelcountry .sat_flagcountry, .sat_citieslist .sat_flagcountry {
+    display: inline-table;
+    margin-left: 5px;
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+}
+.sat_citieslist .sat_flagcountry { 
+    margin-right: 5px;
+    float: left;
+    display: block;
+}
+.sat_tabscountries .sat_labelcountry .sat_namecountry { 
+    width: 125px;
+    /*    height: 20px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*    margin-top: -4px;*/
+    display: inline-block;
+    margin-left: 6px;
+    margin-right: 10px;
+}
+.sat_page hr.sat_graydashed{
+    border: 0;
+    border-bottom: 1px dashed #aaaaaa;
+}
+
+.sat_page .sat_citieslist { list-style-type: none; margin: 10px 0 0 0; padding: 0; width: 100%; }
+.sat_page .sat_citieslist li { overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin: 0 2px 2px 2px;padding: 2px; font-size: 14px; height: 16px; line-height: 16px; float: left; width: 170px}
+html>body .sat_page .sat_citieslist li { height: 20px; line-height: 16px; }
+html>body .sat_page .sat_citieslist li span.ui-icon{ float: left }
+html>body .sat_page .sat_citieslist li span.ui-icon.ui-icon-close{ float: right;cursor: pointer }
+.sat_page .sat_citieslist .ui-state-highlight { height: 16px; line-height: 16px; float: left; ; width: 170px}
+
+.button-primary.focus,
+.button-primary.hover,
+.button-primary:focus,
+.button-primary:hover {
+    background: #1e8cbe;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    color: #fff;
+}
+
+.button-primary {
+    background: #2ea2cc;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+    color: #fff;
+    text-decoration: none;
+}
+
+.button-primary,
+.button-secondary {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    margin: 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.button-primary.focus,
+.button-primary.hover,
+.button-primary:focus,
+.button-primary:hover {
+    background: #1e8cbe;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    color: #fff;
+}
+
+.button-primary {
+    background: #2ea2cc;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+    color: #fff;
+    text-decoration: none;
+}
+
+.widget .widget-top {
+    background: #fafafa;
+    color: #222;
+}
+
+.widget-top {
+    font-size: 13px;
+    font-weight: 600;
+    background: #f7f7f7;
+}
+
+.widget-inside, .widget-top, .widgets-holder-wrap, .wp-editor-container, p.popular-tags, table.widefat {
+    border: 1px solid #e5e5e5;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.widget-title h4 {
+    margin: 0;
+    padding: 15px;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input, select,textarea {
+    margin: 1px;
+    padding: 3px 5px;
+}
+input, select, textarea {
+    font-size: 14px;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+#sat_newreport_url{
+    width: 100%;
+}
+.sat-align-citation{
+    margin-top: 10px;
+}
+
+
+/** MSG BOX */
+.sat_hidden{ display: none;}
+.sat_error, .sat_alert, .sat_notice, .sat_success, .sat_info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
+.sat_error, .alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+.sat_notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
+.sat_success {background:#e6efc2;color:#264409;border-color:#c6d880;}
+.sat_info {background:#d5edf8;color:#205791;border-color:#92cae4;}
+.sat_error a, .sat_alert a {color:#8a1f11;}
+.sat_notice a {color:#514721;}
+.sat_success a {color:#264409;}
+.sat_info a {color:#205791;}
+
+
+
