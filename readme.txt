@@ -4,7 +4,7 @@ Tags: SEO Audit, SEO check, eRanker Plugin, SEO, check SEO factors, google optim
 Requires at least: 3.1.0
 Tested up to: 4.1
 Stable tag: 1.0.0
-Version: 1.0.0
+Version: 1.0.0 
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
