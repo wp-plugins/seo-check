@@ -1,5 +1,5 @@
-<?php global $sat_reportobj; ?>
-<div class="sat_page sat_textaligncenter">
+<?php global $seocheck_reportobj; ?>
+<div class="seocheck_page seocheck_textaligncenter">
     <?php // custom pending message while building reports
     $data = null;
     $custom_msg = get_post(get_posts(array(
@@ -16,14 +16,14 @@
         if(!is_null($data)): ?>
         <div class="text-center"><?php echo $data; ?></div>
         <?php else: ?>
-        <h2><?PHP echo __("Your report is being generated", 'sat') ?></h2>
-        <h4><?PHP echo __("Our servers in each location are analyzing and building the report in real time", 'sat') ?></h4>
-        <p class="text-center"><?PHP echo __("Usually this operation takes less than 1 minute.<br> Your report will be shown as soon as it is done.", 'sat') ?></p>
+        <h2><?PHP echo __("Your report is being generated", 'seocheck') ?></h2>
+        <h4><?PHP echo __("Our servers in each location are analyzing and building the report in real time", 'seocheck') ?></h4>
+        <p class="text-center"><?PHP echo __("Usually this operation takes less than 1 minute.<br> Your report will be shown as soon as it is done.", 'seocheck') ?></p>
         <?php endif; 
         if(empty($coffee)): ?>
         <p class="text-center">
-            <img src="<?PHP echo plugins_url(SAT_FOLDERNAME . '/images/ajax-loader.gif') ?>" alt="<?PHP echo __("Generating Report...", 'sat') ?>" />
-            <br><small style="font-size: 10px"><?PHP #echo __("This page will refresh every 15 seconds until the report is done.", 'sat') ?></small>
+            <img src="<?PHP echo plugins_url(SAT_FOLDERNAME . '/images/ajax-loader.gif') ?>" alt="<?PHP echo __("Generating Report...", 'seocheck') ?>" />
+            <br><small style="font-size: 10px"><?PHP #echo __("This page will refresh every 15 seconds until the report is done.", 'seocheck') ?></small>
         </p>
         <?php endif; ?>
     </div>
@@ -32,7 +32,7 @@
     var refreshreport = setInterval(checkreport, 10000);
     function checkreport() {
         $.ajax({
-            url: '<?php echo plugins_url(SAT_FOLDERNAME . '/views/pending-status.php?id=' . $sat_reportobj->id); ?>',
+            url: '<?php echo plugins_url(SAT_FOLDERNAME . '/views/pending-status.php?id=' . $seocheck_reportobj->id); ?>',
             success: function(result) {                
                 if( result == '0' || result == 0 ) {
                     clearInterval(refreshreport);

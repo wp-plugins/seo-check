@@ -1,137 +1,137 @@
 .er_plugin {
     min-width: 500px;
 }
-.er_plugin .sat_box {
+.er_plugin .seocheck_box {
     border: 1px solid #CCCCCC;
     margin-bottom: 10px;
     padding: 10px 15px;
     border-radius: 4px;
     clear: both;
 }
-.er_plugin .sat_box .sat_box_title {
+.er_plugin .seocheck_box .seocheck_box_title {
     border-bottom: 1px solid #ccc;
     font-size: 15px;
     font-weight: bold;
     padding-bottom: 5px;
 }
-.er_plugin #sat_box_status {
+.er_plugin #seocheck_box_status {
     background-color: #EFF5FF;
 }
-.er_plugin #sat_box_notice {
+.er_plugin #seocheck_box_notice {
     background-color: #C4F095;
 }
-.er_plugin #sat_box_help {
+.er_plugin #seocheck_box_help {
     background-color: #FFFFE0;
     border-color: #E6DB55;
     margin-bottom: 10px;
 }
-.er_plugin #sat_box_help ul {
+.er_plugin #seocheck_box_help ul {
     padding-left: 20px;
     list-style-type: disc;
 }
-.er_plugin #sat_box_help .sat_box_title {
+.er_plugin #seocheck_box_help .seocheck_box_title {
     border-color: #E6DB55;
 }
-.er_plugin #sat_box_help a {
+.er_plugin #seocheck_box_help a {
     color: #111;
 }
-.er_plugin #sat_box_help a:hover {
+.er_plugin #seocheck_box_help a:hover {
     color: #d54e21;
 }
-.er_plugin #sat_box_info {
+.er_plugin #seocheck_box_info {
     border-color: #729AE0;
     margin-bottom: 10px;
     background-color: #EFF5FF;
 }
-.er_plugin #sat_box_info ul {
+.er_plugin #seocheck_box_info ul {
     padding-left: 20px;
     list-style-type: disc;
 }
-.er_plugin #sat_box_info .sat_box_title {
+.er_plugin #seocheck_box_info .seocheck_box_title {
     border-color: #729AE0;
 }
-.er_plugin #sat_box_info a {
+.er_plugin #seocheck_box_info a {
     color: #111;
 }
-.er_plugin #sat_box_info a:hover {
+.er_plugin #seocheck_box_info a:hover {
     color: #d54e21;
 }
-.er_plugin #sat_box_updated {
+.er_plugin #seocheck_box_updated {
     background-color: #def0d8;
     color: #367e31;
     font-weight: bold;
     border-color: #367e31;
 }
-.er_plugin #sat_box_updatederror {
+.er_plugin #seocheck_box_updatederror {
     background-color: #fff5f3;
     color: #ca2523;
     font-weight: bold;
     border-color: #ca2523;
 }
-.er_plugin .sat_table {
+.er_plugin .seocheck_table {
     background-color: #efefef;
     border: 1px solid #ccc;
     margin: 0 0 25px;
     width: 100%;
 }
-.er_plugin .sat_table textarea,
-.er_plugin .sat_table input {
+.er_plugin .seocheck_table textarea,
+.er_plugin .seocheck_table input {
     border-color: #aaa;
     border: 1px solid #ddd;
 }
-.er_plugin .sat_table tr.row_head th {
+.er_plugin .seocheck_table tr.row_head th {
     font-size: 13px;
     font-weight: bold;
     background-color: #3E687B;
     color: #fff;
     text-shadow: 0 1px 0 #333;
 }
-.er_plugin .sat_table tr.row_head th a {
+.er_plugin .seocheck_table tr.row_head th a {
     color: #F1EE10;
 }
-.er_plugin .sat_table tr.row_head th a:hover {
+.er_plugin .seocheck_table tr.row_head th a:hover {
     color: #fff;
     text-decoration: none;
 }
-.er_plugin .sat_table tr.row_odd,
-.er_plugin .sat_table tr.row_odd td {
+.er_plugin .seocheck_table tr.row_odd,
+.er_plugin .seocheck_table tr.row_odd td {
     color: #222;
     background-color: #ddd;
     border-bottom: 1px dotted #BBBBBB;
 }
-.er_plugin .sat_table tr.row_even,
-.er_plugin .sat_table tr.row_even td {
+.er_plugin .seocheck_table tr.row_even,
+.er_plugin .seocheck_table tr.row_even td {
     color: #333;
     background-color: #fff;
     border-bottom: 1px dotted #bbb;
 }
-.er_plugin .sat_table tr td.row_multi {
+.er_plugin .seocheck_table tr td.row_multi {
     border-right: 1px dotted #BBBBBB;
 }
-.er_plugin .sat_table tr.row_foot td {
+.er_plugin .seocheck_table tr.row_foot td {
     background-color: #ddd;
 }
-.er_plugin .sat_table tr.row_foot .error_message {
+.er_plugin .seocheck_table tr.row_foot .error_message {
     color: red;
     background: url("../images/status_error.png") no-repeat scroll 0 50% #dddddd;
     padding-left: 25px;
     font-weight: bold;
 }
-.er_plugin .sat_table tr.row_foot .error_message,
-.er_plugin .sat_table tr.row_foot .error_message a {
+.er_plugin .seocheck_table tr.row_foot .error_message,
+.er_plugin .seocheck_table tr.row_foot .error_message a {
     color: red;
     font-weight: bold;
 }
-.er_plugin .sat_table tr.row_foot .working_message {
+.er_plugin .seocheck_table tr.row_foot .working_message {
     color: blue;
     background: url("../images/status_loading.gif") no-repeat scroll 0 50% #dddddd;
     padding-left: 25px;
     font-weight: bold;
 }
-.er_plugin .sat_table tr.row_foot .error_message a:hover {
+.er_plugin .seocheck_table tr.row_foot .error_message a:hover {
     color: #C70000;
 }
-.er_plugin .sat_table tr.row_foot .success_message {
+.er_plugin .seocheck_table tr.row_foot .success_message {
     color: green;
     background: url("../images/status_ok.png") no-repeat scroll 0 50% #dddddd;
     padding-left: 25px;
@@ -173,50 +173,50 @@
 .er_plugin .fix-width-td-newtool {
     width: 1px !important;
 }
-.er_plugin select.sat_keyworddensity_stopwordmode,
-.er_plugin textarea.sat_keyworddensity_stopworddictionaries,
-.er_plugin input.sat_keyworddensity_url,
-.er_plugin input.sat_keyworddensity_minwordlength,
-.er_plugin select.sat_keyworddensity_ignorebody {
+.er_plugin select.seocheck_keyworddensity_stopwordmode,
+.er_plugin textarea.seocheck_keyworddensity_stopworddictionaries,
+.er_plugin input.seocheck_keyworddensity_url,
+.er_plugin input.seocheck_keyworddensity_minwordlength,
+.er_plugin select.seocheck_keyworddensity_ignorebody {
     width: 100%;
 }
-.er_plugin .sat_floatrigth {
+.er_plugin .seocheck_floatrigth {
     float: right;
 }
-.er_plugin .sat_floatleft {
+.er_plugin .seocheck_floatleft {
     float: left;
 }
-.er_plugin .sat_mariginright {
+.er_plugin .seocheck_mariginright {
     margin-right: 10px;
 }
-.er_plugin .sat_mariginleft {
+.er_plugin .seocheck_mariginleft {
     margin-left: 10px;
 }
-.er_plugin .sat_marigin5bottom {
+.er_plugin .seocheck_marigin5bottom {
     margin-bottom: 5px;
 }
-.er_plugin .widget .widget-top.sat_nomovecursor {
+.er_plugin .widget .widget-top.seocheck_nomovecursor {
     cursor: auto;
 }
-.er_plugin .sat_borderradius3 {
+.er_plugin .seocheck_borderradius3 {
     border-radius: 3px !important;
 }
-.er_plugin .sat_noborder {
+.er_plugin .seocheck_noborder {
     border: 0 !important;
 }
-.er_plugin .sat_nomargin {
+.er_plugin .seocheck_nomargin {
     margin: 0 !important;
 }
-.er_plugin .sat_nopadding {
+.er_plugin .seocheck_nopadding {
     padding: 0 !important;
 }
-.er_plugin .sat_padded {
+.er_plugin .seocheck_padded {
     padding: 15px !important;
 }
-.er_plugin .sat_nobg {
+.er_plugin .seocheck_nobg {
     background-color: transparent !important;
 }
-.er_plugin .sat_bglgray {
+.er_plugin .seocheck_bglgray {
     background-color: #F9F9F9 !important;
 }
 .er_plugin .widget-title h4 {
@@ -225,33 +225,33 @@
     font-weight: bold;
     padding-bottom: 5px;
 }
-.er_plugin .sat_floatingrigthbuttontop {
+.er_plugin .seocheck_floatingrigthbuttontop {
     float: right;
     margin-top: 18px;
     margin-left: 10px;
     margin-bottom: 10px;
 }
-.er_plugin .sat_widget {
+.er_plugin .seocheck_widget {
     margin-bottom: 10px;
 }
-.er_plugin .satclearboth {
+.er_plugin .seocheckclearboth {
     clear: both;
 }
-.er_plugin input.sat_actualcity {
+.er_plugin input.seocheck_actualcity {
     width: 290px;
     height: 28px;
     margin-right: 5px;
 }
-.er_plugin span.sat_actualcityaddbt {
+.er_plugin span.seocheck_actualcityaddbt {
     width: 60px;
     margin-left: 10px;
 }
-.er_plugin select.sat_countriesselectbox,
-.er_plugin textarea.sat_textareakeywords,
-.er_plugin select.sat_maxcities {
+.er_plugin select.seocheck_countriesselectbox,
+.er_plugin textarea.seocheck_textareakeywords,
+.er_plugin select.seocheck_maxcities {
     width: 100%;
 }
-.er_plugin hr.sat_graydashed {
+.er_plugin hr.seocheck_graydashed {
     border: 0;
     border-bottom: 1px dashed #aaaaaa;
 }
@@ -362,52 +362,52 @@
     font-size: inherit;
     font-weight: inherit;
 }
-.er_plugin #sat_newreport_url {
+.er_plugin #seocheck_newreport_url {
     width: 100%;
 }
-.er_plugin .sat_hidden {
+.er_plugin .seocheck_hidden {
     display: none;
 }
-.er_plugin .sat_error,
-.er_plugin .sat_alert,
-.er_plugin .sat_notice,
-.er_plugin .sat_success,
-.er_plugin .sat_info {
+.er_plugin .seocheck_error,
+.er_plugin .seocheck_alert,
+.er_plugin .seocheck_notice,
+.er_plugin .seocheck_success,
+.er_plugin .seocheck_info {
     padding: 0.8em;
     margin-bottom: 1em;
     border: 2px solid #ddd;
 }
-.er_plugin .sat_error,
+.er_plugin .seocheck_error,
 .er_plugin .alert {
     background: #fbe3e4;
     color: #8a1f11;
     border-color: #fbc2c4;
 }
-.er_plugin .sat_notice {
+.er_plugin .seocheck_notice {
     background: #fff6bf;
     color: #514721;
     border-color: #ffd324;
 }
-.er_plugin .sat_success {
+.er_plugin .seocheck_success {
     background: #e6efc2;
     color: #264409;
     border-color: #c6d880;
 }
-.er_plugin .sat_info {
+.er_plugin .seocheck_info {
     background: #d5edf8;
     color: #205791;
     border-color: #92cae4;
 }
-.er_plugin .sat_error a,
-.er_plugin .sat_alert a {
+.er_plugin .seocheck_error a,
+.er_plugin .seocheck_alert a {
     color: #8a1f11;
 }
-.er_plugin .sat_notice a {
+.er_plugin .seocheck_notice a {
     color: #514721;
 }
-.er_plugin .sat_success a {
+.er_plugin .seocheck_success a {
     color: #264409;
 }
-.er_plugin .sat_info a {
+.er_plugin .seocheck_info a {
     color: #205791;
 }

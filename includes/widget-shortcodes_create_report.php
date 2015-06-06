@@ -7,16 +7,16 @@ global $show_lead_generator_form;
 
 $show_lead_generator_form = FALSE;
 
-class sat_create_report_widget extends WP_Widget {
+class seocheck_create_report_widget extends WP_Widget {
 
     /** Constructor -- name this the same as the class above */
-    function sat_create_report_widget() {
+    function seocheck_create_report_widget() {
         parent::WP_Widget(false, $name = 'SEO Toolbox: Create Report');
     }
 
     /** @see WP_Widget::widget -- do not rename this */
     function widget($args, $instance) {
-        echo sat_create_report_generic($args, $instance);
+        echo seocheck_create_report_generic($args, $instance);
     }
 
     /** @see WP_Widget::update -- do not rename this */
@@ -215,7 +215,7 @@ class sat_create_report_widget extends WP_Widget {
 
 //End of the widget class
 
-function sat_create_report_generic($args, $instance) {
+function seocheck_create_report_generic($args, $instance) {
     //TODO 
     ob_start();
     extract($args);
@@ -287,7 +287,7 @@ function sat_create_report_generic($args, $instance) {
         return null;
     }
 
-    echo '<div class="sat_theme_' . $theme . '">';
+    echo '<div class="seocheck_theme_' . $theme . '">';
 
     echo $before_widget;
     
@@ -306,17 +306,17 @@ function sat_create_report_generic($args, $instance) {
         <?php
     }
     //Call the Report viewer
-    global $sat_theme;
+    global $seocheck_theme;
 
-    $sat_theme = $theme;
-    sat_loadscripts();
-    sat_loadscripts_foradmin();
+    $seocheck_theme = $theme;
+    seocheck_loadscripts();
+    seocheck_loadscripts_foradmin();
 
 
 
     if (strcasecmp($type, 'sitereport') === 0) {
         $GLOBALS['show_lead_generator_form'] = $show_lead_generator_form;
-        sat_page_erankerreport();
+        seocheck_page_erankerreport();
     }
 
     //End of the viewer
@@ -336,16 +336,16 @@ function sat_create_report_generic($args, $instance) {
     return $out;
 }
 
-function sat_create_report_shortcode($atts, $content = null) {
+function seocheck_create_report_shortcode($atts, $content = null) {
     $empty_data = array('after_widget' => '', 'before_widget' => $content, 'before_title' => '<h3>', 'after_title' => '</h3>');
-    return sat_create_report_generic($empty_data, $atts);
+    return seocheck_create_report_generic($empty_data, $atts);
 }
 
-function sat_register_shortcode_create_report() {
-    add_shortcode('create-report', 'sat_create_report_shortcode');
+function seocheck_register_shortcode_create_report() {
+    add_shortcode('create-report-seocheck', 'seocheck_create_report_shortcode');
 }
 
 // Add the widget and shortcode to WP
-add_action('widgets_init', create_function('', 'return register_widget("sat_create_report_widget");'));
-add_action('init', 'sat_register_shortcode_create_report');
+add_action('widgets_init', create_function('', 'return register_widget("seocheck_create_report_widget");'));
+add_action('init', 'seocheck_register_shortcode_create_report');
 

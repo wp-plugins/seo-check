@@ -1,18 +1,18 @@
 .er_plugin {
     color: #555;
 }
-.er_plugin .sat_textaligncenter {
+.er_plugin .seocheck_textaligncenter {
     text-align: center;
 }
-.er_plugin .sat_topreport ul.sat_listurltopreport {
+.er_plugin .seocheck_topreport ul.seocheck_listurltopreport {
     margin: 2px 0 15px 0;
 }
-.er_plugin .sat_topreport ul.sat_listurltopreport li a {
+.er_plugin .seocheck_topreport ul.seocheck_listurltopreport li a {
     text-decoration: none;
     color: #666666;
     cursor: pointer;
 }
-.er_plugin .sat_topreport ul.sat_listurltopreport li {
+.er_plugin .seocheck_topreport ul.seocheck_listurltopreport li {
     border-radius: 3px;
     line-height: 15px;
     font-size: 12.5px;
@@ -24,12 +24,12 @@
     white-space: nowrap;
     cursor: default;
 }
-.er_plugin .sat_topreport ul.sat_listurltopreport li:hover {
+.er_plugin .seocheck_topreport ul.seocheck_listurltopreport li:hover {
     border: 1px solid #EEEEEE;
     background: #ededed;
     background: linear-gradient(to right, #ededed 0%, #f6f6f6 33%, #ffffff 100%);
 }
-.er_plugin .sat_topreport .sat_positiondivlist {
+.er_plugin .seocheck_topreport .seocheck_positiondivlist {
     text-align: center;
     display: block;
     min-width: 30px;
@@ -45,20 +45,20 @@
     padding-left: 5px;
     border-right: 1px solid lightgray;
 }
-.er_plugin .sat_topreport .sat_titlelinelist {
+.er_plugin .seocheck_topreport .seocheck_titlelinelist {
     font-size: 13px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: default;
 }
-.er_plugin .sat_topreport .sat_urllinelist {
+.er_plugin .seocheck_topreport .seocheck_urllinelist {
     font-size: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.er_plugin .sat_alert-error {
+.er_plugin .seocheck_alert-error {
     color: #b94a48;
     background-color: #f2dede;
     border-color: #eed3d7;
@@ -67,16 +67,16 @@
     border: 1px solid #fbeed5;
     border-radius: 4px;
 }
-.er_plugin .sat_thstylecss {
+.er_plugin .seocheck_thstylecss {
     text-align: center !important;
     font-weight: normal!important;
     border: 1px solid #dddddd !important;
     padding: 6px;
 }
-.er_plugin .sat_display_none {
+.er_plugin .seocheck_display_none {
     display: none;
 }
-.er_plugin .sat_div_advanced {
+.er_plugin .seocheck_div_advanced {
     padding: 15px 10px;
     margin-bottom: 9px;
     border-bottom: 1px dashed #cccccc;
@@ -84,7 +84,7 @@
     color: #333;
     font-size: 14px;
 }
-.er_plugin .sat_arrow-down {
+.er_plugin .seocheck_arrow-down {
     content: "";
     display: inline-block;
     vertical-align: middle;
@@ -95,11 +95,11 @@
     border-right: 5px solid transparent;
     border-top: 5px solid black;
 }
-.er_plugin .sat_bglgray {
+.er_plugin .seocheck_bglgray {
     background-color: #F9F9F9 !important;
 }
-.er_plugin .sat_table tr.row_even,
-.er_plugin .sat_table tr.row_even td {
+.er_plugin .seocheck_table tr.row_even,
+.er_plugin .seocheck_table tr.row_even td {
     color: #333;
     background-color: #fff;
     border-bottom: 1px dotted #bbb;
@@ -110,7 +110,7 @@
     line-height: 1.3;
     vertical-align: middle;
 }
-.er_plugin .sat_url_view_erankerreport {
+.er_plugin .seocheck_url_view_erankerreport {
     text-align: center;
     padding: 15px 10px;
     margin-bottom: 9px;
@@ -119,74 +119,74 @@
     color: #333;
     border-top: 1px dashed #cccccc;
 }
-.er_plugin .sat_report.sat_keyworddensity {
+.er_plugin .seocheck_report.seocheck_keyworddensity {
     background: white;
     color: #333;
 }
-.er_plugin .sat_w100p {
+.er_plugin .seocheck_w100p {
     width: 100%;
 }
-.er_plugin .sat_display_block {
+.er_plugin .seocheck_display_block {
     display: block;
 }
-.er_plugin .sat_clear_both {
+.er_plugin .seocheck_clear_both {
     clear: both;
 }
-.er_plugin .sat_keyworddensity .sat_url {
+.er_plugin .seocheck_keyworddensity .seocheck_url {
     background: #222;
     color: #eee;
     font-size: larger;
 }
-.er_plugin .sat_keyworddensity li {
+.er_plugin .seocheck_keyworddensity li {
     padding: 5px 0;
     border-bottom: 1px dotted #ddd;
 }
-.er_plugin .sat_keyworddensity i {
+.er_plugin .seocheck_keyworddensity i {
     color: #666;
 }
-.er_plugin .sat_padding_10 {
+.er_plugin .seocheck_padding_10 {
     padding: 10px;
 }
-.er_plugin .sat_keyworddensity .sat_big_block {
+.er_plugin .seocheck_keyworddensity .seocheck_big_block {
     padding: 10px;
     border-bottom: 1px dashed #eee;
 }
-.er_plugin .sat_float_left {
+.er_plugin .seocheck_float_left {
     float: left;
 }
-.er_plugin .sat_float_right {
+.er_plugin .seocheck_float_right {
     float: right;
 }
-.er_plugin .sat_width_48 {
+.er_plugin .seocheck_width_48 {
     width: 48%;
 }
-.er_plugin .sat_googleplusreviewrequest_googlelocalurl {
+.er_plugin .seocheck_googleplusreviewrequest_googlelocalurl {
     width: 100%;
 }
-.er_plugin .sat_background_gray {
+.er_plugin .seocheck_background_gray {
     background: #f7f7f7;
 }
-.er_plugin .sat_header_report_plugin {
+.er_plugin .seocheck_header_report_plugin {
     background-color: #F9F9F9;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #e5e5e5;
     margin-bottom: 4px;
 }
-.er_plugin .sat_div_divider_left {
+.er_plugin .seocheck_div_divider_left {
     display: inline;
 }
-.er_plugin .sat_div_divider_right {
+.er_plugin .seocheck_div_divider_right {
     float: right;
 }
-.er_plugin .sat_title_report_plugin {
+.er_plugin .seocheck_title_report_plugin {
     display: inline;
 }
 .er_plugin .factor_list_checkbox {
     width: 230px;
     display: inline-block;
 }
-.er_plugin .sat_padded {
+.er_plugin .seocheck_padded {
     padding: 15px !important;
     text-align: center;
 }
