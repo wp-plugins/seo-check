@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
     jQuery(function() {
-        jQuery("#sat_error-modal").dialog({
+        jQuery("#seocheck_error-modal").dialog({
             modal: true,
             width: 450,
             buttons: {

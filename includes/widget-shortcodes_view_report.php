@@ -3,16 +3,16 @@
 /**
  * Widget: View report Class
  */
-class sat_view_report_widget extends WP_Widget {
+class seocheck_view_report_widget extends WP_Widget {
 
     /** Constructor -- name this the same as the class above */
-    function sat_view_report_widget() {
+    function seocheck_view_report_widget() {
         parent::WP_Widget(false, $name = 'SEO Toolbox: View Report');
     }
 
     /** @see WP_Widget::widget -- do not rename this */
     function widget($args, $instance) {
-        echo sat_view_report_generic($args, $instance);
+        echo seocheck_view_report_generic($args, $instance);
     }
 
     /** @see WP_Widget::update -- do not rename this */
@@ -76,7 +76,7 @@ class sat_view_report_widget extends WP_Widget {
                    name="<?php echo $this->get_field_name('report_id'); ?>" 
                    type="text" value="<?php echo $report_id; ?>" />
             <br />
-            <span id="sat_widget_singlereport_details"> - Ajax load Report details here - </span>
+            <span id="seocheck_widget_singlereport_details"> - Ajax load Report details here - </span>
         </p>
 
         <p>
@@ -151,7 +151,7 @@ class sat_view_report_widget extends WP_Widget {
 
 //End of the widget class
 
-function sat_view_report_generic($args, $instance) {
+function seocheck_view_report_generic($args, $instance) {
     ob_start();
     extract($args);
 
@@ -165,7 +165,7 @@ function sat_view_report_generic($args, $instance) {
     $after_text = isset($instance['after_text']) ? $instance['after_text'] : '';
     $max_height = isset($instance['max_height']) ? $instance['max_height'] : '20000px';
 
-    echo '<div class="sat_theme_' . $theme . '">';
+    echo '<div class="seocheck_theme_' . $theme . '">';
 
     echo $before_widget;
 
@@ -176,11 +176,11 @@ function sat_view_report_generic($args, $instance) {
     echo '<div style="margin-top: 5px; margin-bottom:5px;border-bottom: 1px solid #EEEEEE; padding-bottom: 5px;  border-top: 1px solid #EEEEEE; padding-top: 5px; clear: both;overflow:' . $overflow . ';max-height:' . $max_height . ';margin-bottom:5px;">';
 
     //Call the Report viewer
-    global $sat_action, $sat_subaction, $sat_theme;
-    $sat_action = SAT_ACT_REPORT;
-    $sat_subaction = $report_id;
-    $sat_theme = $theme;
-    sat_act_report();
+    global $seocheck_action, $seocheck_subaction, $seocheck_theme;
+    $seocheck_action = SEOCHECK_ACT_REPORT;
+    $seocheck_subaction = $report_id;
+    $seocheck_theme = $theme;
+    seocheck_act_report();
     //End of the viewer
 
     echo '</div>';
@@ -197,15 +197,15 @@ function sat_view_report_generic($args, $instance) {
     return $out;
 }
 
-function sat_view_report_shortcode($atts, $content = null) {
+function seocheck_view_report_shortcode($atts, $content = null) {
     $empty_data = array('after_widget' => '', 'before_widget' => $content, 'before_title' => '<h3>', 'after_title' => '</h3>');
-    return sat_view_report_generic($empty_data, $atts);
+    return seocheck_view_report_generic($empty_data, $atts);
 }
 
-function sat_register_shortcode_view_report() {
-    add_shortcode('view-report', 'sat_view_report_shortcode');
+function seocheck_register_shortcode_view_report() {
+    add_shortcode('view-report-seocheck', 'seocheck_view_report_shortcode');
 }
 
 // Add the widget and shortcode to WP
-add_action('widgets_init', create_function('', 'return register_widget("sat_view_report_widget");'));
-add_action('init', 'sat_register_shortcode_view_report');
+add_action('widgets_init', create_function('', 'return register_widget("seocheck_view_report_widget");'));
+add_action('init', 'seocheck_register_shortcode_view_report');

@@ -1,7 +1,9 @@
 <?php
 
-global $sat_report, $sat_report_scores, $sat_factors;
+global $seocheck_report, $seocheck_report_scores, $seocheck_factors;
 
 
-$reportHTML = eRankerCommons::getReportHTML($sat_report, $sat_report_scores, $sat_factors, true, false, true);
+$reportHTML = eRankerCommons::getReportHTML($seocheck_report, $seocheck_report_scores, $seocheck_factors, true, false, true);
 echo $reportHTML;
+
+

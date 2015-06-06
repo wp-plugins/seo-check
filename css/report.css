@@ -14,6 +14,10 @@
 #erreport .factors-score {
     padding:0 0 0 40px;
 }
+#erreport .factor-special {
+    padding: 2px 10px;
+}
+
 
 #erreport .factors-score p,
 #erreport .factors-score ul {
@@ -21,7 +25,7 @@
     padding:0;
 }
 
-#erreport .factors-score h2 {
+#erreport .factors-score h1 {
     line-height:.7;
     font-weight:700;
     margin:0 0 40px;
@@ -151,29 +155,29 @@
     margin:5px 0;
 }
 
-#erreport section.erfactor {
+#erreport div.erfactor {
     border-radius:5px;
     position:relative;
     padding:8px 5px;
 }
 
-#erreport section.erfactor .factor-info p {
+#erreport div.erfactor .factor-info p {
     margin:0;
     padding:2px 10px 0;
 }
-#erreport section.even {
+#erreport div.even {
     background:#fcfcfc;
 }
-#erreport section.odd {
+#erreport div.odd {
     background:#f7f7f7;
 }
 
-#erreport section.odd .factor-info {
+#erreport div.odd .factor-info {
     border-top:1px solid #E4E4E4;
     margin-top:5px;
 }
 
-#erreport section.odd .factor-info::before {
+#erreport div.odd .factor-info::before {
     content:" ";
     display:block;
     width:100%;
@@ -181,7 +185,7 @@
     background:#fff;
 }
 
-#erreport section.even .factor-info::before {
+#erreport div.even .factor-info::before {
     content:" ";
     display:block;
     width:100%;
@@ -307,13 +311,75 @@
 #erreport .progress-grade {
     width:690px;
 }
-
-#erreport #factor-speed_analysis .factor-data strong {
-    font-size:20px;
+#factor-speed-analysis{
+    line-height: 17px;
 }
-#erreport #factor-speed_analysis .factor-special .row:nth-child(2n) {
-    background: #F3F3F3;
-    border-radius: 3px;
+#factor-speed-analysis .progress-wrapper {
+    /*margin-left: 10px;*/
+    background-color:#006CA4;
+    /*    background:    -moz-linear-gradient(left, red, yellow, green);  FF3.6+ 
+        background:        -webkit-gradient(linear, left top, right top, color-stop(0%, red), color-stop(50%, yellow), color-stop(100%, green));  Chrome,Safari4+ 
+        background: -webkit-linear-gradient(left, red, yellow, green);  Chrome10+,Safari5.1+ 
+        background:      -o-linear-gradient(left, red, yellow, green);  Opera 11.10+ 
+        background:     -ms-linear-gradient(left, red, yellow, green);  IE10+ 
+        background:         linear-gradient(to right, red, yellow, green);  W3C */
+    height: 15px;
+    border: 1px solid rgb(239, 239, 239);
+}
+
+#factor-speed-analysis .load-progress-grade {
+    background-color: #ECECEC;
+    float: right;
+    height: 13px;
+    width: 100%;
+    line-height: 13px;
+    -webkit-transition: width 1s; /* Safari */
+    transition: width 1s;
+}
+.factor-data-backlinks{
+    min-width: 300px;
+}
+
+#factor-backlinks .backlinkchartwrapper{
+    width: 33%;
+    height: 250px;
+    float: left;
+}
+@media (max-width: 900px) {
+    #factor-backlinks .backlinkchartwrapper{
+        width: 50%;
+    }
+}
+
+#factor-backlinks .backlinkchart{
+    height: 250px;
+}
+
+.marginbottom0{
+    margin-bottom: 0;
+}
+#factor-speed-analysis  .speed-progress{
+    height: 25px;
+    text-align: center;
+    /*font-size: 10px;*/
+    line-height: 10px;
+    font-size: 10px;
+    position: relative;
+}
+#factor-speed-analysis .highcharts-contextmenu  hr {
+    margin: 5px 0;
+}
+#factor-speed-analysis .speed-progress .fa{
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    height: 25px;
+    width: 25px;
+    font-size: 14px;
+    background-color: #006CA4;
+    padding: 4px 5px 4px 6px;
+    border-radius: 30px!important;
+    color: white;
 }
 
 #erreport .progress-grade .speed-label {
@@ -375,7 +441,7 @@
     z-index:1;
 }
 
-#erreport section.erfactor i.expandtoggle {
+#erreport div.erfactor i.expandtoggle {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -388,7 +454,7 @@
     text-align: center;
 }
 
-#erreport section.erfactor i.expandtoggle.show-details {
+#erreport div.erfactor i.expandtoggle.show-details {
     background-color:#A4A4A4;
 }
 
@@ -431,23 +497,23 @@
     text-align: center;
 }
 
-#erreport div,
+/*#erreport div,
 #erreport ul,
 #erreport li,
 #erreport ol,
 #erreport .erfactor,
 #erreport .col {
     width: auto;
-}
-
+}*/
+/*
 #erreport .can-float {
     float: left;
-}
+}*/
 
-#erreport .can-hide {
+/*#erreport .can-hide {
     display: none;
-}
-
+}*/
+/*
 #erreport .col-xs-1,
 #erreport .col-sm-1,
 #erreport .col-md-1 {
@@ -523,7 +589,7 @@
 #erreport .factor-data.col-sm-12,
 #erreport .factor-data.col-xs-12 {
     padding: 5px 20px;
-}
+}*/
 
 #erreport #rating-stars {
     margin: 0;
@@ -541,7 +607,7 @@
     margin: 15px 0 0 0;
 }
 
-#erreport .factors-score h2,
+#erreport .factors-score h1,
 #erreport .factors-score p { 
     margin: 0;
     padding: 0 30px;
@@ -564,7 +630,7 @@
 }
 
 #erreport .factors-percent p {
-    line-height: 2;
+    /* line-height: 2; */
     font-size: 80%;
 }
 
@@ -572,7 +638,7 @@
     text-transform: uppercase;
 } 
 
-#erreport .factors-percent h1 {
+#erreport .factors-percent .reportfinalscore {
     font-size: 310%;
     line-height: .9;
 }
@@ -599,20 +665,21 @@
     padding: 0;
 }
 
-#erreport section.erfactor .factor-info p {
+#erreport div.erfactor .factor-info p {
     padding: 2px;
     text-align: justify;
+    font-size: 14px;
 }
 
 #erreport .group-name {
     width: auto;
 }
 
-#erreport .factor-data,
+/*#erreport .factor-data,
 #erreport .factor-name {
     padding: 0;
     position: relative;
-}
+}*/
 
 #erreport .factor-name i {
     margin: 0 9px 0 0;
@@ -623,13 +690,13 @@
     font-size: 85%;
 }
 
-#erreport section.erfactor i.expandtoggle {
+#erreport div.erfactor i.expandtoggle {
     color: #016CA2;
     right: 0;
     background: transparent;
 }
 
-#erreport section.erfactor i.expandtoggle.show-details {
+#erreport div.erfactor i.expandtoggle.show-details {
     color: #A4A4A4;
     background: transparent;
 }
@@ -682,6 +749,166 @@
     position: relative;
 }
 
+#erreport .responsivenesswrapper{
+    display: block;
+    font-size: smaller;
+    float: left;
+    width: 50%;
+    min-height: 250px;
+    overflow: visible;
+}
+
+#erreport .responsivenesswrapper .fa{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    height: 25px;
+    width: 25px;
+    font-size: 14px;
+    background-color: #006CA4;
+    padding: 4px 5px 4px 6px;
+    border-radius: 30px !important;
+    color: white;
+}
+#erreport .responsivenesswrapper .responsivenessnotebook .fa{
+    right: 10px;
+}
+
+
+
+
+#erreport .responsivenessdetails{
+    overflow: auto;
+    clear: both;
+    display: block;
+    line-height: 17px;
+    margin: 10px;
+    padding: 5px 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px!important;
+    background: #eeeeee; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #ffffff 0%, #f1f1f1 50%, #efefef 51%, #f6f6f6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#ffffff), color-stop(50%,#f1f1f1), color-stop(51%,#efefef), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg,  #ffffff 0%,#f1f1f1 50%,#efefef 51%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  #ffffff 0%,#f1f1f1 50%,#efefef 51%,#f6f6f6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg,  #ffffff 0%,#f1f1f1 50%,#efefef 51%,#f6f6f6 100%); /* IE10+ */
+    background: linear-gradient(45deg,  #ffffff 0%,#f1f1f1 50%,#efefef 51%,#f6f6f6 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+#erreport .responsivenesslabel{
+    display: block;
+    float: left;
+    width: 30%;
+    font-weight: bold;
+    clear: both;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 4px;
+}
+#erreport .responsivenesslabelcontent img{
+    width: 16px;
+    height: 16px;
+    vertical-align: sub;
+}
+#erreport .responsivenesslabelcontent{
+    display: block;
+    width: 70%;
+    font-weight: normal;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 4px;
+}
+#erreport .responsivenessphone{
+    display: block;
+    width: 81px;
+    height: 127px;
+    position: relative;
+    background: url('https://www.eranker.com/content/themes/eranker/img/phone.png') center center; /** Make sure is the absolute URL */
+    margin-left: auto;
+    margin-right: auto;  
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#erreport .responsivenessphone img{
+    top: 9px;
+    left: 8px;
+    border: 0;
+    width: 65px;
+    height: 106px;
+    position: relative;
+}
+
+#erreport .responsivenesstablet{
+    display: block;
+    width: 190px;
+    height: 147px;
+    position: relative;
+    background: url('https://www.eranker.com/content/themes/eranker/img/tablet.png') center center; /** Make sure is the absolute URL */
+    margin-left: auto;
+    margin-right: auto;  
+}
+#erreport .responsivenesstablet img{
+    top: 15px;
+    left: 15px;
+    width: 160px;
+    height: 116px;
+    border: 0;
+    position: relative;    
+}
+
+
+
+#erreport .responsivenessnotebook{
+    margin-top: 29px;
+    margin-bottom: 30px;
+    display: block;
+    width: 299px;
+    height: 192px;
+    position: relative;
+    background: url('https://www.eranker.com/content/themes/eranker/img/notebook.png') center center; /** Make sure is the absolute URL */
+    margin-left: auto;
+    margin-right: auto;  
+}
+#erreport .responsivenessnotebook img{
+    top: 14px;
+    left: 36px;
+    width: 227px;
+    height: 144px;
+    border: 0;
+    position: relative;
+}
+
+#erreport .responsivenessdesktop{
+    display: block;
+    width: 303px;
+    height: 241px;
+    position: relative;
+    background: url('https://www.eranker.com/content/themes/eranker/img/desktop.png') center center; /** Make sure is the absolute URL */
+    margin-left: auto;
+    margin-right: auto;  
+}
+#erreport .responsivenessdesktop img{
+    top: 18px;
+    left: 18px;
+    width: 267px;
+    height: 159px;
+    border: 0;
+    position: relative;
+}
+
+@media (max-width: 740px) {
+    #erreport .responsivenesstop{
+        display: none;
+    }
+    #erreport .responsivenesswrapper {
+        min-height: 30px;
+    }
+}
+
+
 #erreport div#google-preview-style h3 {
     font-size: 18px;
     line-height: 21px;
@@ -718,10 +945,10 @@
     font-weight: 400;
 }
 
-#erreport section#factor-backlinks .factor-data strong {   
+/*#erreport #factor-backlinks .factor-data strong {   
     font-weight: 700;
     font-size: 20px; 
-}
+}*/
 
 #erreport div#headings-style table {
     width: 70%; 
@@ -732,9 +959,9 @@
 }
 
 
-#erreport section#factor-registered_to_google_maps div.factor-data {
+/*#erreport #factor-registered_to_google_maps div.factor-data {
     overflow: hidden;
-}
+}*/
 
 .clearfix {
     clear:both;
@@ -743,7 +970,7 @@
 #erreport .expandtoggle {
     cursor: pointer;
 }
-#erreport section.erfactor i.expandtoggle:hover {
+#erreport div.erfactor i.expandtoggle:hover {
     color: #1A8EC8;
 }
 
@@ -923,3 +1150,57 @@
 #erreport .errankerreportficons i{
     margin-right: 1px;
 }
+
+#erreport .poweredbyout{
+    margin-right: 5px;
+    float: right;
+    font-size: smaller;
+    opacity: 0.8;
+    cursor: pointer;
+    margin-top: -10px;
+}
+
+#erreport .poweredbyout:hover{
+    opacity: 1;
+}
+#erreport .title-googlepriview{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: #609;
+}
+#erreport .insidegooglepreview{
+    line-height: 18px;
+    color: #545454;
+}
+#erreport .url-googlepreview{
+    white-space: nowrap;
+    height: 17px;
+    line-height: 16px;
+    font-size: 14px;
+    color: #006621;
+    font-style: normal;
+}
+#erreport .description-googlepreview{
+    line-height: 1.4;
+    word-wrap: break-word;
+    color: #545454;
+    font-size: small;
+}
+#erreport .outgooglepreview{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px !important;
+}
+
+#erreport .title-googlepriview a{
+    color:#1a0dab;
+}
+
+

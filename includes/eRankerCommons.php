@@ -17,7 +17,8 @@ class eRankerCommons {
     const BASE_ER = "fad6kh9uo3xltjn48erw5qc20gm7szbi1vpy";
     const BASE_10 = "0123456789";
 
-    public static $imgfolder = "/content/themes/eranker/img/";
+    public static $imgfolder = "https://www.eranker.com/content/themes/eranker/img/";
+    public static $factorCreateImageFolder = "https://www.eranker.com/content/themes/eranker/libs/";
 
     /**
      * Decode a report id from eranker base
@@ -335,7 +336,7 @@ class eRankerCommons {
      * @param boolean $debug The debug flag.
      * @return Array The scores generated
      */
-    public static function getScores($report, $reportData, $reportFactors, $debug = false) {
+    public static function getScores($report, $reportData, $reportFactors, $thumb = NULL, $debug = false) {
         $out = array();
 
         $maxScore = 0;
@@ -434,6 +435,7 @@ class eRankerCommons {
         $out["score"]["raw"] = (double) number_format($currentScore, 1);
         $out["score"]["raw_total"] = (double) number_format(max(1, $maxScore), 1);
         $out["score"]["factors"] = (object) array("red" => $totalRed, "orange" => $totalOrange, "green" => $totalGreen, "missing" => $totalMissing, "neutral" => $totalNeutral);
+        $out["score"]["thumbnail"] = $thumb;
 
         return (object) $out;
     }
@@ -768,7 +770,6 @@ class eRankerCommons {
      * @return string The html of the report. 
      */
     public static function getReportHTML($report, $reportScores, $fullfactors, $logged_in = false, $is_pdf = false, $disable_pdf = false) {
-
         //Make sure that the factors is on the array format
         $fullfactors = self::objectToArray($fullfactors);
 
@@ -814,8 +815,9 @@ class eRankerCommons {
                     $out .= '<h2 onclick="$(\'.ercategorydescription[data-category_id=' . $category_id . ']\').slideToggle();" class="ercategoryname" style="border-color: #' . $categories[$category_id]['bg_color'] . '">';
                     $out .= '<img src="' . $categories[$category_id]['icon'] . '" class="ercategoryicon" alt="{icon}" /> ';
                     $out .= $categories[$category_id]['friendly_name'];
+                    $out .= '</h2>';
                     $out .= '<div class="ercategoryprogressbar"></div>';
-                    $out .= '</h2></div>';
+                    $out .= '</div>';
                     $out .= '<div class="ercategorydescription" data-category_id="' . $category_id . '" style="display:none">' . $categories[$category_id]['description'] . '</div>';
 
                     $is_odd_row = true;
@@ -872,29 +874,24 @@ class eRankerCommons {
      * @return string The html of the report score (the top part of a report). 
      */
     public static function getReportScoreHTML($report, $generalscore, $format = self::BIG, $disable_pdf = false) {
-        $out = "";
-        $thumb_URL = "https://www.eranker.com/IMAGE"; //FIXTHIS
 
-        if (!isset($generalscore['thumbnail']) || empty($generalscore['thumbnail'])) {
-            $thumb_URL = self::$imgfolder . "loading-page-preview.gif";
-        } else {
-            $thumb_URL = $generalscore['thumbnail'];
-        }
+        $out = "";
+
         $report_url = trim(str_replace("http://", "", str_replace("https://", "", $report->url)), " /\\");
 
         $score_raw_total = $generalscore['factors']['missing'] + $generalscore['factors']['green'] + $generalscore['factors']['orange'] + $generalscore['factors']['red'];
 
         $out .= '<div class="row score-table">';
-        $out .= '<div class="col can-float factors-percent" style="padding:0">' // factors-percent
+        $out .= '<div class="col-sm-4 col-md-2 col-lg-3 factors-percent" style="padding:0">' // factors-percent
                 . '<aside>'
                 . '<div class="overall-score">'
                 . '<p>Overall</p>'
-                . '<h1>' . round($generalscore['percentage']) . '</h1>'
+                . '<p class="reportfinalscore">' . round($generalscore['percentage']) . '</p>'
                 . '<p>out of 100</p>'
                 . '<div class="circle" id="circles" data-percent="' . $generalscore['percentage'] . '" ></div>' // percentage chart
                 . '</div>' // overall
                 . '<div class="additional-ratings">'
-                . '<span>Generated on ' . self::convertDateTime($report->date_created, 'UTC') . '<br />';
+                . '<span>Generated on ' . self::convertDateTime($report->date_created, 'UTC') . '</span><br />';
         if ($disable_pdf == FALSE) {
             $out .= '<a id="update-now" onclick="hasSupport()">Update now</a></span>';
         }
@@ -907,8 +904,6 @@ class eRankerCommons {
             endfor;
             $out .= '</div></li>';
         endforeach;
-
-
         $out .= '</ul>'
                 . '</div>' // additional ratings
                 . '</aside>';
@@ -918,24 +913,30 @@ class eRankerCommons {
             $out .= '<div><a download id="download-pdf" onclick="hasSupport()">Download PDF Report</a></div>';
         }
 
+        $thumb_URL = "https://www.eranker.com/IMAGE"; //FIXTHIS
 
+        if (!isset($generalscore['thumbnail']) || empty($generalscore['thumbnail'])) {
+            $thumb_URL = self::$imgfolder . "loading-page-preview.gif";
+        } else {
+            $thumb_URL = $generalscore['thumbnail'];
+        }
         $out .= '</div>' // end factors-percent
-                . '<div class="col can-float factors-score">' // factors score
+                . '<div class="col-sm-8 col-md-5 col-lg-5 factors-score">' // factors score
                 . '<p>Report for URL:</p>'
-                . '<h2>' . $report_url . '</h2>'
+                . '<h1>' . $report_url . '</h1>'
                 . '<ul>'
                 . '<li class="col green"><i class="fa fa-check"></i><b class="factor-score">Successfully passed<span>' . $generalscore['factors']['green'] . '</span></b><div class="factorbar" style="width:' . ($generalscore['factors']['green'] * 100 / $score_raw_total) . '%"></div></li>'
                 . '<li class="col orange"><i class="fa fa-minus"></i><b class="factor-score">Room for improvement<span>' . $generalscore['factors']['orange'] . '</span></b><div class="factorbar" style="width:' . ($generalscore['factors']['orange'] * 100 / $score_raw_total) . '%"></div></li>'
                 . '<li class="col red"><i class="fa fa-times"></i><b class="factor-score">Errors<span>' . ( $generalscore['factors']['red'] + $generalscore['factors']['missing'] ) . '</span></b><div class="factorbar" style="width:' . ($generalscore['factors']['red'] * 100 / $score_raw_total) . '%"></div></li>'
-                . '<div class="clearfix"></div>'
                 . '</ul>'
+                . '<div class="clearfix"></div>'
                 . '</div>' // end factors-score
-                . '<div class="col can-float factors-site">' // site screen
+                . '<div class=" col-md-5 col-lg-4 hidden-xs hidden-sm factors-site">' // site screen
                 . '<div class="printscreen">'
-                . '<img id="sitescreen" src="' . $thumb_URL . '">' // actual site screen
+                . '<img id="sitescreen" alt="Website Screenshot: ' . $report_url . '" src="' . $thumb_URL . '">' // actual site screen
                 . '</div>'
                 . '</div>'; // end factors-site
-        $out .= '<div class="clearfix"></div></div>'; // end score-table
+        $out .= '</div><div class="clearfix"></div>'; // end score-table
 
 
 
@@ -952,6 +953,9 @@ class eRankerCommons {
      * @return string the HTML of the rendered factor
      */
     public static function getFactorHTML($report, $factor, $score, $is_even = false, $is_loggedin = false) {
+        //For this to aways be tru for now
+        $is_loggedin = true;
+
         $factor = (object) $factor;
         $out = "";
         switch ($score['model']['status']) {
@@ -987,33 +991,37 @@ class eRankerCommons {
 
 
 
-        $out .= '<section data-id="' . $factor->id . '" data-factorready="' . ($available ? '1' : '0') . '" class="erfactor ' . ($is_even ? 'even' : 'odd') . '" id="factor-' . $factor->id . '" data-status="' . $score['model']['status'] . '" '
+        $out .= '<div data-id="' . $factor->id . '" data-factorready="' . ($available ? '1' : '0') . '" class="erfactor ' . ($is_even ? 'even' : 'odd') . '" id="factor-' . $factor->id . '" data-status="' . $score['model']['status'] . '" '
                 . 'onclick="' . ( $is_loggedin ? 'niceToggle(jQuery(this).attr(\'id\'))' : '' ) . '">'
                 . '<div class="row">';
-        $out .= '<div class="col can-float factor-name">';
+        $out .= '<div class="factor-name col-sm-12 col-md-4 col-lg-3 ">';
+        $out .= '<div class="factor-name-inside">';
 
         if ($available) {
             $out .= ( $status ? '<i class="erankerreporticonspacer fa fa-' . $status . ' ' . $statuscolor . '"></i>' : '' ) . $factor->friendly_name;
         } else {
             $out .= '<i class="erankerreporticonspacer fa fa-cog fa-spin"></i>' . $factor->friendly_name;
         }
+        $out .= '</div>';
 
 
         $out .= '<div class="ericonsrow">';
 
-
-
         $totalIcons = 3;
 
 
-        $impact = $factor->correlation > 0.8 ? 3 : ($factor->correlation > 0.4 ? 2 : 1);
-        $impactTitle = "Low Impact";
-        if ($factor->correlation > 0.4) {
-            $impactTitle = "Medium Impact";
+        $impactTitle = "High Impact";
+        $impact = 3;
+        if ($factor->correlation < 0.1) {
+            $impactTitle = "Low Impact";
+            $impact = 1;
+        } else {
+            if ($factor->correlation < 0.25) {
+                $impactTitle = "Medium Impact";
+                $impact = 2;
+            }
         }
-        if ($factor->correlation > 0.8) {
-            $impactTitle = "High Impact";
-        }
+
 
         $out .= '<div title="' . $impactTitle . '" class="erankertooltip errankerreportficons errankerreportficons-red">';
         for ($i = 0; $i < $totalIcons; $i++) {
@@ -1026,13 +1034,15 @@ class eRankerCommons {
         $out .= '</div>';
 
 
-        $dificulty = strcasecmp($factor->difficulty_level, "HARD") === 0 ? 3 : ( strcasecmp($factor->difficulty_level, "MEDIUM") === 0 ? 2 : 1);
+        $dificulty = 1;
         $dificultTitle = "Easy to Solve";
         if (strcasecmp($factor->difficulty_level, "MEDIUM") === 0) {
-            $dificultTitle = "Hard to Solve";
+            $dificultTitle = "Moderate difficulty";
+            $dificulty = 2;
         }
         if (strcasecmp($factor->difficulty_level, "HARD") === 0) {
-            $dificultTitle = "Very Hard to Solve";
+            $dificultTitle = "Hard to Solve";
+            $dificulty = 3;
         }
 
         $out .= '<div title="' . $dificultTitle . '" class="erankertooltip errankerreportficons errankerreportficons-yellow" >';
@@ -1050,46 +1060,81 @@ class eRankerCommons {
         $out .= '</div>';
 
 
-
         $out .= '</div>';
 
-        $out .= '<div class="col can-float factor-data">';
+        $out .= '<div class="factor-data col-sm-12 col-md-8 col-lg-9  ">';
         if ($available) {
-            $out .= self::getFactorHTMLHelper($factor, $score['model']['model'], $score['data'], $score['model']['status'], $is_loggedin);
+            $out .= self::getFactorHTMLHelper($report, $factor, $score['model']['model'], $score['data'], $score['model']['status'], $is_loggedin);
         } else {
             $out .= '<i class="fa fa-cog fa-spin"></i> Loading...';
         }
         $out .= '</div>';
 
+
+
+        if (strcasecmp($factor->id, 'backlinks') == 0) {
+            $out .= '<div class="col can-float factor-data-backlinks">';
+            $out .= '</div>';
+        }
+
         $out .= $is_loggedin ? '<div class="clearfix col factor-info"><p>' . html_entity_decode($score['model']['description']) . '</p></div>' : '';
 
-        $out .= '<div class="clearfix"></div></div>' . '<i class="fa fa-plus expandtoggle"></i>' . '</section>';
+        $out .= '<div class="clearfix"></div></div>' . '<i class="fa fa-plus expandtoggle"></i>' . '</div>';
 
         return $out;
     }
 
-    public static function getFactorHTMLHelper($factor, $endModel, $data, $status, $is_loggedin) {
-        $html = "";        
+    /**
+     * Get the ajax report object
+     * @param object $report the report object
+     * @param array $reportFactors all factors object from report
+     * @param object $score the report scores
+     * @param string $factorsList string list the factors (comma)
+     * @param boolean $is_userloggedin if the user is loggedin;
+     */
+    public static function ajaxReport($report, $reportFactors, $score, $factorsList, $is_userloggedin) {
+        $ajax_factors = explode(',', trim($factorsList));
+        $reportFactors = self::objectToArray($reportFactors);
+        $output = array();
+        //Add the base report score
+        $output['score'] = $score->score;
+        $output['status'] = $report->status;
+
+        //Add on the output data, if the factor is avaiable, factor name, status and the HTML
+        if (!empty($ajax_factors)) {
+            foreach ($ajax_factors as $ajax_factor_id) {
+                if (!in_array($ajax_factor_id, $report->factors_available)) {
+                    continue;
+                }
+                $output[$ajax_factor_id] = array();
+                $scoreobj = self::objectToArray($score->$ajax_factor_id);
+                $output[$ajax_factor_id]['friendly_name'] = $scoreobj['model']['friendly_name'];
+                $output[$ajax_factor_id]['status'] = $scoreobj['model']['status'];
+                $output[$ajax_factor_id]['html'] = self::getFactorHTMLHelper($report, $reportFactors[$ajax_factor_id], $scoreobj["model"]["model"], $scoreobj["data"], $scoreobj["model"]["status"], $is_userloggedin);
+            }
+        }
+        return $output;
+    }
+
+    public static function getFactorHTMLHelper($report, $factor, $endModel, $data, $status, $is_loggedin) {
+        $html = "";
         $factor = self::objectToArray($factor);
         if ($is_loggedin || (!$is_loggedin && $factor['free'])) {
-            $html = forward_static_call(array(self::NAME, 'gui' . ucfirst($factor['gui_type'])), html_entity_decode($endModel), $data);
+            $html = forward_static_call(array(self::NAME, 'gui' . ucfirst($factor['gui_type'])), html_entity_decode($endModel), $data, $report);
         } else {
             $html = '<div class="has-blur"></div>';
         }
         return $html;
     }
 
-    public static function guiDefault($endModel, $data) {
+    public static function guiDefault($endModel, $data, $report) {
         return is_null($endModel) ? $data : $endModel;
     }
 
-    public static function guiHeadings($endModel, $data) {
+    public static function guiHeadings($endModel, $data, $report) {
         $out = '';
         if (!is_null($data)) {
             $obj = (object) $data;
-//            if (!empty($endModel)) {
-//                //$out .= '<p>' . $endModel . '</p>';
-//            }
             $out .= '<table class="report_headingtable">';
             for ($i = 1; $i <= 6; $i++) {
                 $out .= $i == 1 ? '<tr class="report_headingtable_firstrow">' : '';
@@ -1130,36 +1175,545 @@ class eRankerCommons {
         return empty($out) ? false : '<div class="headings-style">' . $out . '</div>';
     }
 
-    /**
-     * Get the ajax report object
-     * @param object $report the report object
-     * @param array $reportFactors all factors object from report
-     * @param object $score the report scores
-     * @param string $factorsList string list the factors (comma)
-     * @param boolean $is_userloggedin if the user is loggedin;
-     */
-    public static function ajaxReport($report, $reportFactors, $score, $factorsList, $is_userloggedin) {
-        $ajax_factors = explode(',', trim($factorsList));
-        $reportFactors = self::objectToArray($reportFactors);
-        $output = array();
-        //Add the base report score
-        $output['score'] = $score->score;
-        $output['status'] = $report->status;
+    public static function guiStructureddata($endModel, $data, $report) {
+        $out = $endModel;
+        if (!empty($data) && is_array($data)) {
+            if (!empty($out)) {
+                $out .= "<br />";
+            }
+            $out = implode(", ", $data);
+        }
+        return (!empty($data)) ? $out : "You need implement structured data on your website.";
+    }
 
-        //Add on the output data, if the factor is avaiable, factor name, status and the HTML
-        if (!empty($ajax_factors)) {
-            foreach ($ajax_factors as $ajax_factor_id) {
-                if (!in_array($ajax_factor_id, $report->factors_available)) {
-                    continue;
-                }
-                $output[$ajax_factor_id] = array();
-                $scoreobj = self::objectToArray($score->$ajax_factor_id);
-                $output[$ajax_factor_id]['friendly_name'] = $scoreobj['model']['friendly_name'];
-                $output[$ajax_factor_id]['status'] = $scoreobj['model']['status'];
-                $output[$ajax_factor_id]['html'] = self::getFactorHTMLHelper($reportFactors[$ajax_factor_id], $scoreobj["model"]["model"], $scoreobj["data"], $scoreobj["model"]["status"], $is_userloggedin);
+    public static function guiEmails($endModel, $data, $report) {
+        $out = '';
+        if (!empty($data)) {
+            foreach ($data as $singleEmail) {
+                $out .= '<img src="' . self::$factorCreateImageFolder . 'createimage.php?size=11&transparent=1&padding=0&bgcolor=250&textcolor=50&text=' . urlencode(strrev(base64_encode($singleEmail))) . '" alt="Website Contact Email"><br />';
             }
         }
-        return $output;
+
+        return empty($out) ? '<div class="emails-style">Emails not found inside the HTML content.</div>' : $out;
+    }
+
+    public static function guiLogo($endModel, $data, $report) {
+        if (!is_null($data)) {
+            return "<a href='" . str_replace("'", "", strip_tags($data)) . "' target='_blank'><img src='" . str_replace("'", "", strip_tags($data)) . "' alt='Website Logo' style='max-width:400px;max-height: 100px;'></a>";
+        } else {
+            return $endModel;
+        }
+    }
+
+    public static function guiAlexarank($endModel, $data, $report) {
+        $out = '';
+        if (!is_null($data)) {
+            $obj = (object) $data;
+            if (!empty($obj->rank)) {
+                $out = $obj->rank;
+            }
+        }
+        return empty($out) ? '<div class="alexarank-style">You are not listed in Alexa, most probably because your website has a very low amount of traffic.</div>' : $endModel;
+    }
+
+    public static function guiPhone($endModel, $data, $report) {
+
+        if (empty($data)) {
+            return "Phones not found inside the home or contact page.";
+        }
+
+        $out = '';
+        if (isset($data) && !empty($data)) {
+            foreach ($data as $singlePhone) {
+                $country_code = $singlePhone['region'];
+                $out .= "<img src='".self::$imgfolder ."/flags/flags-iso/shiny/24/$country_code.png' style='height:24px;vertical-align:bottom;' alt='$country_code' title='$country_code' /> ";
+                $type = ucfirst(strtolower(str_replace("_", " ", $singlePhone['type'])));
+                $out .= '<img title="Type: ' . $type . '" src="' . self::$factorCreateImageFolder . 'createimage.php?size=11&transparent=1&padding=0&bgcolor=250&textcolor=50&text=' . urlencode(strrev(base64_encode($singlePhone['phone']))) . '" alt="Website Phone Number"> <br />';
+            }
+        }
+
+        return $out;
+    }
+
+    public static function guiBacklinks($endModel, $data, $report) {
+        //var_dump($data);
+        $out = '';
+        $chartsData = array();
+
+        $chartsData[] = array(array("id" => "image", "title" => "Images"), array("id" => "text", "title" => "Text"),);
+//        $chartsData[] = array(array("id" => "pages", "title" => "Unique Pages"), array("id" => "refpages", "title" => "Referal Pages"));
+        $chartsData[] = array(array("id" => "nofollow", "title" => "NoFollow"), array("id" => "dofollow", "title" => "DoFollow"));
+        $chartsData[] = array(array("id" => "sitewide", "title" => "Site Wide"), array("id" => "not_sitewide", "title" => "Not Site Wide"));
+        $chartsData[] = array(array("id" => "links_external", "title" => "Outbound links"), array("id" => "links_internal", "title" => "Internal links"));
+        $chartsData[] = array(array("id" => "redirect", "title" => "Redirect"), array("id" => "canonical", "title" => "Canonical"));
+        $chartsData[] = array(array("id" => "alternate", "title" => "Alternate"), array("id" => "html_pages", "title" => "HTML Pages"));
+
+
+
+        //array('gov' => 'Gov', 'edu' => 'Edu', 'rss' => 'Rss'),
+
+        $charts = "";
+        foreach ($chartsData as $chartNumber => $singleChart) {
+            if (isset($data[$singleChart[0]["id"]]) && isset($data[$singleChart[1]["id"]]) && ($data[$singleChart[0]["id"]] + $data[$singleChart[1]["id"]]) > 0) {
+                $charts .= "<div class='backlinkchartwrapper'><div style='width:100%;margin: 0 auto' class='backlinkchart' data-chartready='false' "
+                        . "data-id1='" . $singleChart[0]["id"] . "' data-id2='" . $singleChart[1]["id"] . "' "
+                        . "data-title1='" . $singleChart[0]["title"] . "' data-title2='" . $singleChart[1]["title"] . "' "
+                        . "data-value1='" . $data[$singleChart[0]["id"]] . "'  data-value2='" . $data[$singleChart[1]["id"]] . "'></div></div>";
+            }
+        }
+
+//        if (is_array($data)) {
+//            foreach ($pairs as $pair) {
+//                $chart = '<div class="hidden piechart" data-labels="true" data-donut="false" data-pos-values="true">';
+//                foreach ($pair as $key => $label) {
+//                    $chart .= '<div class="data-chart" id="' . $key . '" data-label="' . $label . '" data-value="' . $data[$key] . '"></div>';
+//                }
+//                $chart .= '</div>';
+//                $out .= $chart;
+//            }
+//        }
+
+        $top = "<h4 class='marginbottom0'>Total number of external backlinks: <b>" . $data['total'] . "</b></h4>
+            <p>The website has a total of <b>" . $data['refpages'] . "</b> unique external pages pointing its pages</p>";
+
+        $domain = $report->url;
+
+        return $top . '</div><div class="clearfix col factor-special">' // trick div
+                . '<div class="row" id="backlinkscharts">' . $out . '</div>'
+                . '<div id="backlinkspie" class="row">' . $charts . '</div>'
+                . '<div class="poweredbyout" onclick="window.open(\'https://ahrefs.com/site-explorer/overview/subdomains?target=' . urlencode($domain) . '\')"  style="display:block;text-align:center;" > <span >Check deep link analysis on ahrefs</span><br /><img src="' . self::$imgfolder . 'ahrefs_logoSmall.png" alt="ahrefs"></div>';
+    }
+
+    public static function guiAnchorstext($endModel, $data, $report) {
+        //var_dump($data);
+        $html = "<h4 class='marginbottom0'>Overall performance score: <b></b> out of 100</h4>"
+                . "<p>The page has a total of <b></b> HTTP requests and a total weight of <b>Kb</b> with empty cache</p>";
+
+        $charts = "";
+//        foreach ($chartsData as $chartNumber => $singleChart) {
+//            if (isset($data[$singleChart[0]["id"]]) && isset($data[$singleChart[1]["id"]]) && ($data[$singleChart[0]["id"]] + $data[$singleChart[1]["id"]]) > 0) {
+//                $charts .= "<div class='backlinkchartwrapper'><div style='width:100%;margin: 0 auto' class='backlinkchart' data-chartready='false' "
+//                        . "data-id1='" . $singleChart[0]["id"] . "' data-id2='" . $singleChart[1]["id"] . "' "
+//                        . "data-title1='" . $singleChart[0]["title"] . "' data-title2='" . $singleChart[1]["title"] . "' "
+//                        . "data-value1='" . $data[$singleChart[0]["id"]] . "'  data-value2='" . $data[$singleChart[1]["id"]] . "'></div></div>";
+//            }
+//        }
+        $attr = '';        
+        $count = count($data['anchors']);
+        if (!empty($data['anchors'])) {
+           foreach ($data['anchors'] as $key => $value) {
+               $attr .= "data-anchor-".$key."='" .$value['anchor'] . "' data-backlinks-".$key."='" .$value['backlinks'] . "' ";
+               
+           }
+//           for ($i =1; $i <= $count; $i++){
+//               $attr .= "data-chartready='false' data-anchor-".$count."='" . $data['anchors'][$i]['anchor'] . " ";
+//           }
+       }     
+
+        
+        $test = "[['aa',12],['ds',22],['a',16]]";
+       
+        return "<div class='anchorschart' data-chartready='false' total='1' ".$attr."></div>";
+       
+    }
+
+    public static function guiServerlocation($endModel, $data, $report) {
+
+        $out = '';
+
+        $latitude = !empty($data) && isset($data['latitude']) ? $data['latitude'] : null;
+        $longitude = !empty($data) && isset($data['longitude']) ? $data['longitude'] : null;
+        $ip = !empty($data) && isset($data['ip']) ? $data['ip'] : null;
+
+        $host = !empty($data) && isset($data['host']) ? $data['host'] : null;
+        $city = !empty($data) && isset($data['city']) ? $data['city'] : null;
+        $state = !empty($data) && isset($data['state']) ? $data['state'] : null;
+        $country_name = !empty($data) && isset($data['country_name']) ? $data['country_name'] : null;
+        $zip = !empty($data) && isset($data['zip']) ? $data['zip'] : null;
+        $country_code = !empty($data) && isset($data['country_code']) ? $data['country_code'] : null;
+        $accuracy_radius = !empty($data) && isset($data['accuracy_radius']) ? $data['accuracy_radius'] : null;
+        $timezone = !empty($data) && isset($data['timezone']) ? $data['timezone'] : null;
+
+
+        $content = "";
+        if (!empty($host)) {
+            $content .= "<h4 stype='margin-bottom: 0;'><strong>" . ucfirst($host) . "</strong></h4>";
+        }
+
+        if (!empty($ip)) {
+            $content .= "<strong>Server IP:</strong> " . $ip . "<br />";
+        }
+        if (!empty($city)) {
+            $content .= "<strong>City:</strong> " . $city . "<br />";
+        }
+        if (!empty($state)) {
+            $content .= "<strong>State:</strong> " . $state . "<br />";
+        }
+        if (!empty($zip)) {
+            $content .= "<strong>ZIP Code:</strong> " . $zip . "<br />";
+        }
+        if (!empty($country_code)) {
+            $content .= "<strong>Country:</strong> <img src='".self::$imgfolder ."/flags/flags-iso/shiny/24/$country_code.png' style='height: 16px;vertical-align: sub;' alt='$country_code' /> " . $country_name . "<br />";
+        }
+        if (!empty($timezone)) {
+            $content .= "<strong>TimeZone:</strong> " . $timezone;
+        }
+
+        $out .= '<div id="mapserverlocation" data-mapready="false" style="height: 450px" data-serverlocation-title="' . $host . '" data-serverlocation-accuracy="' . $accuracy_radius . '" data-serverlocation-latitude="' . str_replace(",", ".", $latitude) . '" data-serverlocation-longitude="' .  str_replace(",", ".", $longitude)  . '" >' . $content . '</div>';
+
+        return !empty($data) ? $out : 'Server Location not found';
+    }
+
+    public static function guiGooglepreview($endModel, $data, $report) {
+
+        $outString = '';
+        if (isset($data) && !empty($data)) {
+            foreach ($data as $key => $value) {
+                if (strcasecmp($key, 'title') === 0) {
+                    $title = $value;
+                }
+
+                if (strcasecmp($key, 'meta_description') === 0) {
+                    $meta_description = $value;
+                }
+                if (strcasecmp($key, 'url_href') === 0) {
+                    $url_href = parse_url($value);
+
+                    if (strcasecmp($url_href['scheme'], 'http') === 0) {
+                        $url_href = $url_href['host'];
+                    } else {
+                        $url_href = $value;
+                    }
+                }
+            }
+        }
+
+
+        if (!empty($url_href) && !empty($title)) {
+            $outString .= "<div class='outgooglepreview'>";
+            $outString .= "<h3 class='title-googlepriview'>";
+            $outString .= "<a rel='nofollow' href='$url_href' target='_blank'> $title </a>";
+            $outString .= "</h3>";
+            $outString .= "<div class='insidegooglepreview'>";
+            $outString .= "<div class='url-googlepreview'>";
+            $outString .= "$url_href";
+            $outString .= "</div>";
+            if (!empty($meta_description)) {
+                $outString .= "<div class='description-googlepreview'>";
+                $outString .= "$meta_description";
+                $outString .= "</div>";
+            }
+            $outString .= "</div>";
+            $outString .= "</div>";
+        }
+
+        return !empty($outString) ? $outString : 'Not Found.';
+    }
+
+    private static function helperResponsiveness($key, $data) {
+        $out = '';
+        if (isset($data[$key]) && !empty($data[$key])) {
+            if (isset($data[$key]['preview']) && !empty($data[$key]['preview'])) {
+
+                $color = (isset($data[$key]['pass']) && $data[$key]['pass']) ? "#04B974" : "#F00101";
+                $icon = (isset($data[$key]['pass']) && $data[$key]['pass']) ? "fa-check" : "fa-times";
+
+                //var_dump($data[$key]['preview']);
+                $out .= "  <div class='responsivenesswrapper'>"
+                        . "     <div class='responsivenesstop responsiveness$key'>"
+                        . "         <img src='" . $data[$key]['preview'] . "' alt='Website Preview: $key' />"
+                        . "         <i class='fa $icon' style='background-color: $color'></i>"
+                        . "     </div>"
+                        . "     <div class='responsivenessdetails'>"
+                        . "         <div class='responsivenesslabel'>Browser:</div><div class='responsivenesslabelcontent'><img src='".self::$imgfolder ."/icons/" . (strtolower(str_replace(' ', '', $data[$key]['browser']))) . ".png' alt='Browser Icon' /> " . (isset($data[$key]['browser']) ? $data[$key]['browser'] : "") . "</div>"
+                        . "         <div class='responsivenesslabel'>OS:</div><div class='responsivenesslabelcontent'><img src='".self::$imgfolder ."/icons/" . (strtolower(str_replace(' ', '', $data[$key]['os']))) . ".png' alt='OS Icon' /> " . (isset($data[$key]['os']) ? $data[$key]['os'] : "") . "</div>"
+                        . "         <div class='responsivenesslabel'>Resolution:</div><div class='responsivenesslabelcontent'>" . $data[$key]['screen']["width"] . "x" . $data[$key]['screen']["height"] . "</div>"
+                        . "         <div class='responsivenesslabel' title='Vertical Scrollbar'>V. Scrollbar:</div><div class='responsivenesslabelcontent'>" . ($data[$key]['scrollbar']["vertical"] ? "Yes" : "No") . "</div>"
+                        . "         <div class='responsivenesslabel' title='Horizontal Scrollbar'>H. Scrollbar:</div><div class='responsivenesslabelcontent' style='" . ($data[$key]['scrollbar']["horizontal"] ? "color:" . $color : "") . "' >" . ($data[$key]['scrollbar']["horizontal"] ? "Yes" : "No") . "</div>"
+                        . "         <div class='responsivenesslabel'>User Redirected:</div><div class='responsivenesslabelcontent'>" . ($data[$key]['redirected'] ? ("Yes - " . (isset($data[$key]['url']) ? $data[$key]['url'] : "")) : "No") . "</div>";
+//                if (TRUE || (isset($data[$key]['redirected']) && $data[$key]['redirected'])) {
+//                    $out .= "         <div class='responsivenesslabel'>Dst. URL:</div><div class='responsivenesslabelcontent' title='" . (isset($data[$key]['url']) ? $data[$key]['url'] : "") . "'>" . (isset($data[$key]['url']) ? $data[$key]['url'] : "") . "</div>";
+//                }
+                $out .= "      </div>"
+                        . "</div>";
+            }
+        }
+        return $out;
+    }
+
+    public static function guiResponsiveness($endModel, $data, $report) {
+        if (empty($data)) {
+            return guiDefault($endModel, $data, $report);
+        }
+
+        $out = '';
+        $out .= eRankerCommons::helperResponsiveness("phone", $data);
+        $out .= eRankerCommons::helperResponsiveness("tablet", $data);
+        $out .= eRankerCommons::helperResponsiveness("notebook", $data);
+        $out .= eRankerCommons::helperResponsiveness("desktop", $data);
+
+        if (empty($out)) {
+            return guiDefault($endModel, $data, $report);
+        }
+
+        return $out;
+    }
+
+    public static function guiDuplicatecontent($endModel, $data, $report) {
+
+        $outString = '';
+        $urlsString = '';
+        if (isset($data) && !empty($data)) {
+            $outString = 'We found <strong>' . count($data) . ' </strong> website contents that have blocks similar to their website to know the probability of similarity, click each of the listed links.<hr></hr>';
+            foreach ($data as $key => $value) {
+                foreach ($value as $key2 => $value2) {
+                    if (strcasecmp($key2, 'title') === 0) {
+                        $title = $value2;
+                    }
+                    if (strcasecmp($key2, 'url') === 0) {
+                        $url_href = $value2;
+                    }
+                }
+                if (!empty($url_href) && !empty($title)) {
+                    $urlsString .= "<li><a href='$url_href' target='_blank'> $title </a><br /> </li>";
+                }
+            }
+            $outString .= "<ul>$urlsString</ul>";
+        }
+
+        return !empty($outString) ? $outString : 'Not Found.';
+    }
+
+    public static function guiSpeedanalysis($model, $data, $report) {
+        if (empty($data)) {
+            return $model;
+        }
+        if (!isset($data['grades']) || empty($data['grades'])) {
+            return 'Speed Anlysis failed to run';
+        }
+        $factors_labels = array(
+            'numreq' => 'Make fewer HTTP Requests',
+            'expires' => 'Add Expires headers',
+            'jsbottom' => 'Put JavaScript at bottom',
+            'xhr' => 'Make AJAX cacheable',
+            'compress' => 'Compress components with gzip',
+            'favicon' => 'Make favicon small and cacheable',
+            'csstop' => 'Put CSS at top',
+            'dns' => 'Reduce DNS lookups',
+            'mindom' => 'Reduce the number of DOM elements',
+            'cdn' => 'Use a Content Delivery Network (CDN)',
+            'cookiefree' => 'Use cookie-free domains',
+            'emptysrc' => 'Avoid empty src or href',
+            'imgnoscale' => 'Do not scale images in HTML',
+            'redirects' => 'Avoid URL redirects',
+            'dupes' => 'Remove duplicate JavasScript and CSS',
+            'no404' => 'Avoid HTTP 404 (Not Found) error',
+            'xhrmethod' => 'Use GET for AJAX requests',
+            'mincookie' => 'Reduce cookie size',
+            'etags' => 'Configure entity tags (ETags)',
+        );
+
+
+        $statsNames = array(
+            'doc' => 'HTML',
+            'js' => 'JavaScript',
+            'css' => 'CSS',
+            'image' => 'Image',
+            'json' => 'Json',
+            'redirect' => 'Redirect'
+        );
+
+
+        $html = "
+            <h4 class='marginbottom0'>Overall performance score: <b>" . $data['score'] . "</b> out of 100</h4>
+            <p>The page has a total of <b>" . $data['requests'] . "</b> HTTP requests and a total weight of <b>" . round($data['size'] / 1024) . "Kb</b> with empty cache</p>
+
+
+            <div id='speedanalysispiechartsrequest' data-chartready='false' style='width: 50%; height: 300px;margin: 0 auto; float: left;'></div>
+            <div id='speedanalysispiechartsweight' data-chartready='false' style='width: 50%; height: 300px;margin: 0 auto;  float: left;'></div>
+            
+            <script type='text/javascript'>
+
+                function speedanalysispiechartsweight() {
+                
+                jQuery('#speedanalysispiechartsweight[data-chartready=\"false\"]').highcharts({
+                        chart: {
+                            animation: false,
+                            plotBackgroundColor: 'transparent',
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            backgroundColor: 'transparent'
+                        },
+                        title: {
+                            text: 'Requests Size',
+                            margin: 0
+                        },
+                        colors: ['#FF9000', '#0281C4', '#04B974',  '#F45B5B', '#444444', '#5F65E0'],
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.y}Kb ({point.percentage:.1f}%)</b>'
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'bottom',                            
+                            enabled: false
+                        },
+                        exporting:{
+                            enabled: false
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.y}Kb',
+                                    color: 'white',
+                                    distance: 20,
+                                    color: 'black'
+                                }
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: 'Request Size',
+                            showInLegend: true,
+                            data: [";
+
+        $countStats = 0;
+        foreach ($statsNames as $statKey => $statName) {
+            if (!isset($data['stats']) || !isset($data['stats'][$statKey]) || !isset($data['stats'][$statKey]['w'])) {
+                continue;
+            }
+            $statValue = max(0, round($data['stats'][$statKey]['w'] / 1024));
+            if ($statValue == 0) {
+                continue;
+            }
+            if ($countStats > 0) {
+                $html .= ",";
+            }
+
+            $html .= "{name: '$statName', y: " . $statValue . ", sliced: " . ($countStats > 0 ? "false" : "true") . ", selected: " . ($countStats > 0 ? "false" : "true") . " }";
+            $countStats++;
+        }
+
+        $html .= "
+                            ]
+                        }]
+                    });  
+                    
+                     jQuery('#speedanalysispiechartsweight').attr('data-chartready', 'true');
+                }
+
+                function speedanalysispiechartsrequest() {
+                    jQuery('#speedanalysispiechartsrequest[data-chartready=\"false\"]').highcharts({
+                        chart: {
+                            animation: false,
+                            plotBackgroundColor: 'transparent',
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            backgroundColor: 'transparent'
+                        },
+                        title: {
+                            text: 'HTTP Requests',
+                            margin: 0
+                        },
+                        colors: ['#FF9000', '#0281C4', '#04B974',  '#F45B5B', '#444444', '#5F65E0'],
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.y} ({point.percentage:.1f}%)</b>'
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'bottom',                            
+                            enabled: false
+                        },
+                        exporting:{
+                            enabled: false
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.y}',
+                                    color: 'white',
+                                    distance: 20,
+                                    color: 'black'
+                                }
+                            }
+                        },
+                        series: [{
+                            type: 'pie',
+                            name: 'HTTP Requests',
+                            showInLegend: true,
+                            data: [";
+
+        $countStats = 0;
+        foreach ($statsNames as $statKey => $statName) {
+            if (!isset($data['stats']) || !isset($data['stats'][$statKey]) || !isset($data['stats'][$statKey]['r'])) {
+                continue;
+            }
+            $statValue = max(0, round($data['stats'][$statKey]['r']));
+            if ($statValue == 0) {
+                continue;
+            }
+            if ($countStats > 0) {
+                $html .= ",";
+            }
+
+            $html .= "{name: '$statName', y: " . $statValue . ", sliced: " . ($countStats > 0 ? "false" : "true") . ", selected: " . ($countStats > 0 ? "false" : "true") . " }";
+            $countStats++;
+        }
+
+        $html .= "
+                            ]
+                        }]
+                    });  
+                     jQuery('#speedanalysispiechartsrequest').attr('data-chartready', 'true');
+                }
+             </script>";
+
+
+
+
+
+
+
+        foreach ($data['grades'] as $label => $grade) {
+            $invgrade = min(98, max(0, 100 - $grade));  //grade is inversed
+
+
+            if ($grade < 31) {
+                $color = "#FE0000";
+                $icon = 'fa-times';
+            } else {
+                if ($grade < 71) {
+                    $icon = 'fa-minus';
+                    $color = "#FF9000";
+                } else {
+                    $icon = 'fa-check';
+                    $color = "#04B974";
+                }
+            }
+
+            $html .= '<div class="row">';
+            $html .= '<div class="col-sm-12 col-md-5 speed-label">' . $factors_labels[$label] . '</div>'
+                    . '<div class="col-sm-12 col-md-7 speed-progress">' . '<i class="fa ' . $icon . '" style="background-color: ' . $color . '"></i>'
+                    . '<div class="progress-wrapper" style="background-color: ' . $color . '"><div class="load-progress-grade" style="width:' . $invgrade . '%">&nbsp;</div></div>'
+                    . '<small>' . $grade . '%</small></div>';
+            //. '<div class="col can-float speed-grade" style="color: ' . $color . '" >' . $grade . '%</div>';
+            $html .= '<div class="clearfix"></div>'
+                    . '</div>';
+        }
+        return $html;
     }
 
 }
