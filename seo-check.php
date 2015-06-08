@@ -4,7 +4,7 @@
   Plugin Name: SEO-Check
   Plugin URI: http://www.eranker.com/wordpress-plugin/
   Description: Provide eRanker SEO Check tools in your website. This plugin requires a valid FREE eRanker API Key.
-  Version: 2.0.2
+  Version: 2.0.3
   Author: georanker
   Author URI: http://www.eranker.com/
   Network: false
@@ -20,7 +20,7 @@
 /**/////////////////////////////////////////////////////////////////////////////
 // Plugin Contants definition
 //////////////////////////////////////////////////////////////////////////////*/
-define('SEOCHECK_VER', '2.0.2');
+define('SEOCHECK_VER', '2.0.3');
 define('SEOCHECK_FOLDERNAME', 'seo-check');
 define('SEOCHECK_PAGETITLE', 'seo-check'); //Do not change or the CSS will broke!
 define('SEOCHECK_ACT_REPORT', 'report'); 
@@ -348,7 +348,7 @@ function seocheck_loadscripts() {
 
     wp_enqueue_script('gmaps', '//maps.google.com/maps/api/js?sensor=true"', array(), SEOCHECK_VER);
 
-    wp_enqueue_script('er-js-report-maps-gmaps', plugins_url(basename(dirname(__FILE__)) . '/js/gmap/gmap.js'), array('er-js-report-maps'), SEOCHECK_VER);
+    wp_enqueue_script('er-js-report-maps-gmaps', plugins_url(basename(dirname(__FILE__)) . '/js/gmap/gmap.js'), array('gmaps'), SEOCHECK_VER);
 
 
 
