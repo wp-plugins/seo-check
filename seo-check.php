@@ -20,10 +20,10 @@
 /**/////////////////////////////////////////////////////////////////////////////
 // Plugin Contants definition
 //////////////////////////////////////////////////////////////////////////////*/
-define('SEOCHECK_VER', '2.0.0');
+define('SEOCHECK_VER', '2.0.2');
 define('SEOCHECK_FOLDERNAME', 'seo-check');
 define('SEOCHECK_PAGETITLE', 'seo-check'); //Do not change or the CSS will broke!
-define('SEOCHECK_ACT_REPORT', 'report');
+define('SEOCHECK_ACT_REPORT', 'report'); 
 
 /**/////////////////////////////////////////////////////////////////////////////
 // Check to make sure you meet the requirements
