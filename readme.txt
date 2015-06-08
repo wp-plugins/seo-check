@@ -58,6 +58,12 @@ Visit <http://www.eranker.com/blog/> for all information about our plugin. Or ch
 * Improved the connection with eRanker API
 
 == Upgrade Notice ==
+= 2.0.3 =
+* Fixed Gmaps JS
+
+= 2.0.2 =
+* Fixed some flag images 404 errors
+
 = 2.0.1 =
 * Fixed issues with the grid system
 
