@@ -1226,7 +1226,7 @@ class eRankerCommons {
         if (isset($data) && !empty($data)) {
             foreach ($data as $singlePhone) {
                 $country_code = $singlePhone['region'];
-                $out .= "<img src='".self::$imgfolder ."/flags/flags-iso/shiny/24/$country_code.png' style='height:24px;vertical-align:bottom;' alt='$country_code' title='$country_code' /> ";
+                $out .= "<img src='".self::$imgfolder ."/flags/24/$country_code.png' style='height:24px;vertical-align:bottom;' alt='$country_code' title='$country_code' /> ";
                 $type = ucfirst(strtolower(str_replace("_", " ", $singlePhone['type'])));
                 $out .= '<img title="Type: ' . $type . '" src="' . self::$factorCreateImageFolder . 'createimage.php?size=11&transparent=1&padding=0&bgcolor=250&textcolor=50&text=' . urlencode(strrev(base64_encode($singlePhone['phone']))) . '" alt="Website Phone Number"> <br />';
             }
@@ -1353,7 +1353,7 @@ class eRankerCommons {
             $content .= "<strong>ZIP Code:</strong> " . $zip . "<br />";
         }
         if (!empty($country_code)) {
-            $content .= "<strong>Country:</strong> <img src='".self::$imgfolder ."/flags/flags-iso/shiny/24/$country_code.png' style='height: 16px;vertical-align: sub;' alt='$country_code' /> " . $country_name . "<br />";
+            $content .= "<strong>Country:</strong> <img src='".self::$imgfolder ."/flags/24/$country_code.png' style='height: 16px;vertical-align: sub;' alt='$country_code' /> " . $country_name . "<br />";
         }
         if (!empty($timezone)) {
             $content .= "<strong>TimeZone:</strong> " . $timezone;
