@@ -37,6 +37,10 @@ Visit <http://www.eranker.com/blog/> for all information about our plugin. Or ch
 
 == Changelog ==
 
+= 2.0.1 =
+* Fixed issues with the grid system
+* Removed unnecessary files
+
 = 2.0.0 =
 * Fixed some Bugs
 * Added new factors
@@ -48,6 +52,8 @@ Visit <http://www.eranker.com/blog/> for all information about our plugin. Or ch
 * Improved the connection with eRanker API
 
 == Upgrade Notice ==
+= 2.0.1 =
+* Fixed issues with the grid system
 
 = 2.0.0 =
 Added new factors and fixed some bugs
