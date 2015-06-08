@@ -3,8 +3,8 @@ Contributors: georanker
 Tags: SEO Audit, SEO check, eRanker Plugin, SEO, check SEO factors, google optimization, advertisers, SEO tool, site rank, search engine optimization, SEO factors, SEO correlation, eRanker wordpress plugin
 Requires at least: 3.1.0
 Tested up to: 4.2.2
-Stable tag: 2.0.0
-Version: 2.0.0
+Stable tag: 2.0.2
+Version: 2.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,6 +37,10 @@ Visit <http://www.eranker.com/blog/> for all information about our plugin. Or ch
 
 == Changelog ==
 
+= 2.0.1 =
+* Fixed issues with the grid system
+* Removed unnecessary files
+
 = 2.0.0 =
 * Fixed some Bugs
 * Added new factors
@@ -48,6 +52,8 @@ Visit <http://www.eranker.com/blog/> for all information about our plugin. Or ch
 * Improved the connection with eRanker API
 
 == Upgrade Notice ==
+= 2.0.1 =
+* Fixed issues with the grid system
 
 = 2.0.0 =
 Added new factors and fixed some bugs

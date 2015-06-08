@@ -4,7 +4,7 @@
   Plugin Name: SEO-Check
   Plugin URI: http://www.eranker.com/wordpress-plugin/
   Description: Provide eRanker SEO Check tools in your website. This plugin requires a valid FREE eRanker API Key.
-  Version: 2.0.0
+  Version: 2.0.2
   Author: georanker
   Author URI: http://www.eranker.com/
   Network: false
