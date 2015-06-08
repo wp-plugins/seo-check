@@ -37,6 +37,12 @@ Visit <http://www.eranker.com/blog/> for all information about our plugin. Or ch
 
 == Changelog ==
 
+= 2.0.3 =
+* Fixed Gmaps
+
+= 2.0.2 =
+* Fixed some flag images
+
 = 2.0.1 =
 * Fixed issues with the grid system
 * Removed unnecessary files
