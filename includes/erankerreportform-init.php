@@ -50,7 +50,8 @@ if (empty($allfactor_list) || isset($allfactor_list->debug) || $seocheck_nocache
 
 if (isset($_REQUEST['sc_url'])) {
 
-    $seocheck_newreporteranker_url = isset($_REQUEST['sc_url']) ? $_REQUEST['sc_url'] : "";
+    $seocheck_newreporteranker_url = isset($_REQUEST['sc_url']) ? urldecode($_REQUEST['sc_url']) : "";
+	
     $checkbox_factors = isset($_REQUEST['factorsGroup']) && !empty($_REQUEST['factorsGroup']) ? $_REQUEST['factorsGroup'] : array();
     if(empty($checkbox_factors)){
         $checkbox_factors = $seocheck_accountinfo->plan->default_factors;
@@ -63,7 +64,7 @@ if (isset($_REQUEST['sc_url'])) {
             $seocheck_error_msg = __("Is not a valid url. Must possess the url http:// or https://", 'seocheck');
             $seocheck_newreporteranker_url = null;
         } else {
-            if (strpos($seocheck_newreporteranker_url, "http://") === FALSE || strpos($seocheck_newreporteranker_url, "https://") === FALSE) {
+            if (strpos($seocheck_newreporteranker_url, "http://") === FALSE && strpos($seocheck_newreporteranker_url, "https://") === FALSE && strpos($seocheck_newreporteranker_url, "HTTPS://") === FALSE && strpos($seocheck_newreporteranker_url, "HTTP://") === FALSE) {
                 $seocheck_newreporteranker_url = 'http://' . $seocheck_newreporteranker_url;
             }
         }
@@ -74,7 +75,6 @@ if (isset($_REQUEST['sc_url'])) {
         $seocheck_error = TRUE;
         $seocheck_error_msg = __("You must specify a valid URL or domain. <br/>A URL must have at least 5 caracters and a dot (.).", 'seocheck');
     }   
-    
     //Check Factors
     if (empty($checkbox_factors)) {
         $seocheck_error = TRUE;
