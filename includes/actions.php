@@ -63,7 +63,7 @@ function seocheck_act_report() {
         //AJAX requests
         if (isset($_GET['ajax']) && !empty($_GET['ajax']) && isset($_GET['factors']) && !empty($_GET['factors'])) {
             error_reporting(E_ALL);
-            ini_set('display_errors', 1);
+            ini_set('display_errors', 0); //do not shown erros when generating a json output
             $ajaxObj = eRankerCommons::ajaxReport($seocheck_report, $seocheck_factors, $seocheck_report_scores, $_GET['factors'], true);
             header('Content-Type: application/json');
             echo json_encode($ajaxObj, JSON_PRETTY_PRINT);
